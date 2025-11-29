@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudentHub - Master's Research Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="pages-mode">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-block">
+        <img class="logo-img" src="assets/img/logo3.png" alt="StudentHub logo" />
+        <div class="logo-text">
+          <h1 id="site-title">StudentHub</h1>
+          <p id="site-subtitle">Master's Research Project - Global Horizon University (GHU)</p>
+        </div>
+      </div>
+    <nav class="main-nav">
+      <a href="#home" data-page="home" class="active">Home</a>
+      <a href="#problem" data-page="problem">Problem</a>
+      <a href="#research" data-page="research">Research</a>
+      <a href="#solution" data-page="solution">Solution</a>
+      <a href="#data" data-page="data">Data</a>
+      <a href="#architecture" data-page="architecture">Architecture</a>
+      <a href="#dashboard" data-page="dashboard">Dashboard</a>
+      <a href="#ethics" data-page="ethics">Ethics</a>
+      <a href="#lessons" data-page="lessons">Lessons</a>
+      <a href="#extras" data-page="appendix">Appendix</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Hero / Home -->
+  <section id="home" class="section hero page active" data-page="home">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Master's Research Project</p>
+        <h2 id="hero-heading">Fixing Fragmented Alumni Data with a Lifetime StudentHub</h2>
+        <p class="hero-text" id="home-problem">
+          Universities struggle to track alumni outcomes and deliver personalized career support because data is scattered across legacy systems, spreadsheets, and external platforms.
+        </p>
+        <p class="hero-text" id="home-intro">
+          Loading intro...
+        </p>
+        <div class="hero-meta">
+          <div>
+            <span class="label">Student</span>
+            <span class="value">[Your Name Here]</span>
+          </div>
+          <div>
+            <span class="label">Course</span>
+            <span class="value">Master Research Project</span>
+          </div>
+          <div>
+            <span class="label">Institution</span>
+            <span class="value">Global Horizon University (Case)</span>
+          </div>
+        </div>
+        <a href="#problem" data-page="problem" class="btn-primary page-link">Start with the Problem</a>
+      </div>
+      <div class="hero-card">
+        <h3>Problem Snapshot</h3>
+        <p id="hero-problem">
+          Loading problem overview...
+        </p>
+      </div>
+    </div>
+
+    <div class="container home-info-grid">
+      <div class="info-card full-span">
+        <h3>Executive Summary</h3>
+        <div id="home-summary" class="summary-box">Loading summary...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Context & Stakeholders -->
+  <section id="problem" class="section page" data-page="problem">
+    <div class="container">
+      <h2>1. Problem Context & Stakeholder Perspectives</h2>
+      <div class="two-col">
+        <div>
+          <h3>The Core Problem</h3>
+          <p id="problem-overview">
+            Loading problem context...
+          </p>
+          <div class="highlight-box" id="problem-lifecycle">
+            Loading lifecycle gap...
+          </div>
+          <div class="highlight-box" id="problem-gap">
+            Loading primary gap...
+          </div>
+          <div class="highlight-box" id="solution-angle">
+            Loading solution angle...
+          </div>
+        </div>
+        <div>
+          <h3>Who Is Affected?</h3>
+          <ul class="card-list" id="stakeholders-list">
+            <!-- Stakeholders from JSON -->
+          </ul>
+        </div>
+      </div>
+      <div class="problem-options">
+        <h3>Problem Options & Scoring</h3>
+        <div class="two-col">
+          <ul class="card-list" id="problem-options"></ul>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/brainstorming-diagram.png"
+              data-full="assets/img/brainstorming-diagram.png"
+              data-caption="Problem brainstorming and scoring matrix."
+              alt="Problem brainstorming diagram"
+            />
+            <figcaption>Problem brainstorming and scoring snapshot.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Insights -->
+  <section id="research" class="section alt page" data-page="research">
+    <div class="container">
+      <h2>2. Research & Insights</h2>
+      <div class="two-col">
+        <div>
+          <h3>Industry & Academic Signals</h3>
+          <div id="research-summary">
+            <!-- Filled from data2.json -->
+          </div>
+        </div>
+        <div>
+          <h3>Evidence and Market Gaps</h3>
+          <ul id="research-list" class="card-list">
+            <!-- Filled from data2.json -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposed Solution -->
+  <section id="solution" class="section page" data-page="solution">
+    <div class="container">
+      <h2>3. Proposed Solution - StudentHub</h2>
+
+      <div class="solution-grid">
+        <div class="solution-card">
+          <h3>Platform Overview</h3>
+          <p id="solution-overview">
+            Loading overview...
+          </p>
+          <p id="data-foundation">
+            Loading data foundation...
+          </p>
+        </div>
+        <div class="solution-card">
+          <h3>Role-Based Experiences</h3>
+          <ul>
+            <li id="role-students">Loading student role...</li>
+            <li id="role-employers">Loading employer role...</li>
+            <li id="role-admins">Loading admin role...</li>
+          </ul>
+        </div>
+        <div class="solution-card">
+          <h3>Goals of the MVP</h3>
+          <ul id="goals-list">
+            <!-- Filled from data.json -->
+          </ul>
+        </div>
+        <div class="solution-card">
+          <h3>Technical Stack</h3>
+          <p id="tech-stack">Loading technical stack...</p>
+        </div>
+      </div>
+
+      <div class="solution-grid" id="strategy-section">
+        <div class="solution-card">
+          <h3>Product Strategy Statement</h3>
+          <p id="strategy-statement">Loading strategy...</p>
+          <p><strong>Vision:</strong> <span id="strategy-vision"></span></p>
+          <p><strong>Target Users:</strong> <span id="strategy-users"></span></p>
+          <p><strong>Differentiators:</strong> <span id="strategy-differentiators"></span></p>
+          <p><strong>Risks:</strong> <span id="strategy-risks"></span></p>
+        </div>
+        <div class="solution-card">
+          <h3>Business Goals (SMART)</h3>
+          <ul id="strategy-goals" class="card-list compact"></ul>
+        </div>
+        <div class="solution-card">
+          <h3>SWOT Snapshot</h3>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/swot.png"
+              data-full="assets/img/swot.png"
+              data-caption="SWOT analysis for GHU Alumni Connect Analytics."
+              alt="SWOT analysis"
+            />
+            <figcaption id="strategy-swot-text">SWOT analysis summary.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Charter (placeholder-ready) -->
+  <section id="charter" class="section alt page" data-page="solution">
+    <div class="container">
+      <h2>Project Charter</h2>
+      <div class="two-col">
+        <div>
+          <h3>Scope & Objectives</h3>
+          <p id="charter-scope">
+            Add scope, in/out-of-scope, and key objectives here. Use this spot for the final charter text when ready.
+          </p>
+        </div>
+        <div>
+          <h3>Constraints & Assumptions</h3>
+          <p id="charter-constraints">
+            Capture assumptions, constraints, dependencies, and success criteria. Replace this placeholder once data is available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data & ERD -->
+  <section id="data" class="section alt page" data-page="data">
+    <div class="container">
+      <ul class="card-list" id="data-main-entities"></ul>
+
+      <div class="highlight-box" id="data-generation">Loading generation logic...</div>
+      <div class="highlight-box" id="data-value">Loading value for solution...</div>
+
+      <figure class="figure">
+        <img
+          class="lightbox-img"
+          src="assets/img/StudentHUB_ERD.png"
+          data-full="assets/img/StudentHUB_ERD.png"
+          data-caption="ERD structure for StudentHub data model."
+          alt="ERD diagram"
+        />
+        <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Architecture & Data Design -->
+  <section id="architecture" class="section page" data-page="architecture">
+    <div class="container">
+      <h2>5. Architecture</h2>
+      <div class="two-col">
+        <div>
+          <h3>Enterprise Architecture (High-Level)</h3>
+          <p id="architecture-business">
+            Loading business architecture...
+          </p>
+          <p id="architecture-information">
+            Loading information architecture...
+          </p>
+          <p id="architecture-technology">
+            Loading technology architecture...
+          </p>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/Conceptual%20architecture.png"
+              data-full="assets/img/Conceptual%20architecture.png"
+              data-caption="Enterprise architecture for StudentHub."
+              alt="Enterprise architecture diagram"
+            />
+            <figcaption>Figure A1. Enterprise architecture for StudentHub.</figcaption>
+          </figure>
+        </div>
+        <div>
+          <h3>Data Structure & ERD</h3>
+          <p id="data-design-overview">
+            Loading data design overview...
+          </p>
+          <p id="data-identity">Loading identity and roles...</p>
+          <p id="data-design-student">
+            Loading student data design...
+          </p>
+          <p id="data-experience-skills">Loading experience and skills design...</p>
+          <ul class="card-list" id="data-behavioral-list"></ul>
+          <p id="data-jobs-orgs">Loading jobs and organizations design...</p>
+          <p id="data-matching">Loading matching design...</p>
+          <p id="data-analytics">Loading analytics design...</p>
+          <p id="data-future">Loading future design...</p>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/StudentHUB_ERD.png"
+              data-full="assets/img/StudentHUB_ERD.png"
+              data-caption="ERD structure for StudentHub data model."
+              alt="ERD diagram"
+            />
+            <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
+          </figure>
+          <p class="small-note">
+            Synthetic data rules and relational mappings are summarized in the report appendices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Flow -->
+  <section id="data-flow" class="section alt page" data-page="architecture">
+    <div class="container">
+      <h2>Data Flow Explanation</h2>
+      <p id="data-flow-text">
+        High-level data flow placeholder. Describe how data moves from collection to storage, matching, dashboards, and AI assistant. Replace with your final data flow notes or diagram.
+      </p>
+      <div class="empty-state" id="data-flow-visual">
+        Add your data flow diagram here (image, iframe, or screenshot). Until then, the conceptual architecture diagram above can serve as a quick stand-in.
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard & Insights -->
+  <section id="dashboard" class="section alt page" data-page="dashboard">
+    <div class="container">
+      <h2>6. Dashboard & Data Analysis</h2>
+      <p class="section-intro">
+        Dashboards prove how unified data powers personalized insights for each role. Open the live dashboard below or explore the screenshots.
+      </p>
+      <p id="dashboard-overview">Loading dashboard overview...</p>
+      <p>
+        <a id="dashboard-link" href="#" target="_blank" class="btn-primary">Open Live Dashboard</a>
+      </p>
+
+      <div class="dashboards-grid">
+        <article class="dash-card">
+          <h3>Student Dashboard</h3>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/student-dashboard.png"
+              data-full="assets/img/student-dashboard.png"
+              data-caption="Student view - personalized jobs, events, news, and engagement score."
+              alt="Student dashboard screenshot"
+            />
+            <figcaption>Student view - personalized jobs, events, news, and engagement score.</figcaption>
+          </figure>
+          <p id="dashboard-student">
+            Loading student dashboard summary...
+          </p>
+        </article>
+
+        <article class="dash-card">
+          <h3>Employer Dashboard</h3>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/employer-dashboard.png"
+              data-full="assets/img/employer-dashboard.png"
+              data-caption="Employer view - postings, match quality, and applicant insights."
+              alt="Employer dashboard screenshot"
+            />
+            <figcaption>Employer view - postings, match quality, and applicant insights.</figcaption>
+          </figure>
+          <p id="dashboard-employer">
+            Loading employer dashboard summary...
+          </p>
+        </article>
+
+        <article class="dash-card">
+          <h3>Admin Analytics</h3>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/admin-dashboard.png"
+              data-full="assets/img/admin-dashboard.png"
+              data-caption="Admin view - engagement metrics, system health, and program performance."
+              alt="Admin dashboard screenshot"
+            />
+            <figcaption>Admin view - engagement metrics, system health, and program performance.</figcaption>
+          </figure>
+          <div class="thumb-strip">
+            <img class="lightbox-img thumb" src="assets/img/admin-dashboard-2.png" data-full="assets/img/admin-dashboard-2.png" data-caption="Admin dashboard - outcomes and engagement views." alt="Admin dashboard 2" />
+            <img class="lightbox-img thumb" src="assets/img/admin-dashboard-3.png" data-full="assets/img/admin-dashboard-3.png" data-caption="Admin dashboard - adoption and activity trends." alt="Admin dashboard 3" />
+            <img class="lightbox-img thumb" src="assets/img/admin-dashboard-4.png" data-full="assets/img/admin-dashboard-4.png" data-caption="Admin dashboard - satisfaction and readiness indicators." alt="Admin dashboard 4" />
+          </div>
+          <p id="dashboard-admin">
+            Loading admin dashboard summary...
+          </p>
+          <ul id="insights-list">
+            <!-- Filled from data.json -->
+          </ul>
+        </article>
+      </div>
+
+      <div class="highlight-box" id="dashboard-data">
+        Loading data integration notes...
+      </div>
+    </div>
+  </section>
+
+  <!-- Ethics & Social -->
+  <section id="ethics" class="section page" data-page="ethics">
+    <div class="container">
+      <h2>7. Ethical & Social Considerations</h2>
+      <div class="two-col">
+        <div>
+          <h3>Privacy & AI Usage</h3>
+          <ul id="ethics-ai">
+            <li>AI never receives personal identifiers; it only uses skills, experience, education, interests, and preferences.</li>
+            <li>Users choose what to share and can delete or export their data permanently (FERPA/GDPR aligned).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Accessibility & Inclusion</h3>
+          <ul id="ethics-accessibility">
+            <li>Semantic HTML, contrast, and keyboard navigation are supported across the layout.</li>
+            <li>Match scores exclude sensitive attributes to reduce algorithmic bias.</li>
+            <li>Voice navigation is planned for future versions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lessons Learned -->
+  <section id="lessons" class="section page" data-page="lessons">
+    <div class="container">
+      <h2>8. Lessons Learned & Reflection</h2>
+      <div id="lessons-paragraphs">
+        <!-- Filled from data.json -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras -->
+  <section id="extras" class="section alt page" data-page="appendix">
+    <div class="container">
+      <h2>9. Extras & Links</h2>
+      <div class="extras-grid">
+        <div class="extras-card">
+          <h3>Prototype</h3>
+          <p>Interactive prototype with role-based flows and dashboards.</p>
+          <a href="https://stuff-puma-48890563.figma.site/" target="_blank" class="btn-secondary">
+            Open Figma Prototype
+          </a>
+        </div>
+        <div class="extras-card">
+          <h3>GitHub Repository</h3>
+          <p>Add your project repo link here once the site is pushed to GitHub Pages.</p>
+          <a href="#" class="btn-secondary disabled" aria-disabled="true">Coming Soon</a>
+        </div>
+        <div class="extras-card">
+          <h3>Dashboard Link</h3>
+          <p>Link to your live/hosted dashboard (e.g., Streamlit, Power BI, or other).</p>
+          <a id="extras-dashboard" href="#" class="btn-secondary disabled" aria-disabled="true">Add Dashboard URL</a>
+        </div>
+      </div>
+      <div class="small-note" id="table-note"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>StudentHub - Master's Research Project</p>
+      <p class="footnote">Built as a portfolio-ready project site for course presentation and future employers.</p>
+    </div>
+  </footer>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-inner" role="dialog" aria-modal="true">
+      <button class="lightbox-close" aria-label="Close image">X</button>
+      <img id="lightbox-img" src="" alt="Expanded view" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+      <div class="lightbox-controls">
+        <button id="zoom-out" type="button">-</button>
+        <button id="zoom-reset" type="button">Reset</button>
+        <button id="zoom-in" type="button">+</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data3.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

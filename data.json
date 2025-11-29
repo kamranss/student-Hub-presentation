@@ -1,0 +1,102 @@
+{
+  "executiveSummary": "Universities struggle to maintain accurate, long-term visibility into student and alumni outcomes because data is fragmented across CRMs, spreadsheets, surveys, and external platforms. StudentHub is a unified, university-owned platform that centralizes profiles, opportunities, engagement, and anonymized AI assistance so it stays relevant after graduation. Role-based dashboards personalize jobs, events, news, and mentorship for students, give employers structured applicant insights, and provide administrators with real-time engagement and system health visibility. Clean, centralized data improves match relevance, dashboards, and trust via privacy-first AI. The impact is a sustainable ecosystem that boosts employability, alumni relationships, and transparent pathways between students, employers, and the university.",
+  "problemContext": {
+    "overview": "Universities depend on accurate student and alumni data for jobs, mentorship, and engagement but current systems are fragmented and short-lived. Most platforms stop being relevant after graduation, so institutions lose visibility, alumni disengage, and employers lose access to verified talent.",
+    "gap": "There is no unified, university-owned platform that remains relevant across the full career lifecycle. Fragmented data and one-time-use portals produce low engagement, weak tracking, and missed opportunities for mentorship and hiring.",
+    "stakeholders": [
+      {"role": "Students", "pain": "No personalized space that stays valuable after graduation; need tailored jobs, mentorships, events, news, and actionable profile insights."},
+      {"role": "Alumni", "pain": "Want ongoing professional value and curated opportunities to mentor or give back but mostly receive generic outreach and drift away."},
+      {"role": "Employers", "pain": "Struggle to find qualified talent in a structured way; career fairs and static boards do not surface best-fit candidates with match scores."},
+      {"role": "Administrators", "pain": "Lack unified data, dashboards, and predictive insights for engagement, outcomes, or program planning."}
+    ],
+    "solutionAngle": "StudentHub becomes a lifetime professional hub that centralizes profiles, opportunities, events, news, mentorships, AI relevance tools, and analytics. Future phases add personal notes, task boards, and Canvas integration so the platform stays part of daily academic life."
+  },
+  "researchInsights": [
+    {"source": "CASE (2022)", "finding": "Structured engagement measurement outperforms manual tracking, supporting a centralized platform that unifies engagement, jobs, mentorships, and outcomes."},
+    {"source": "Jones et al. (2017)", "finding": "Employment records are scattered across surveys, social media, and outdated CRMs, making clean datasets rare and validating consolidation of profiles, work histories, events, and interactions."},
+    {"source": "AffinaQuest (2023); Bryant University (2018); Gomez-Cravioto et al. (2022)", "finding": "Predictive scoring works when data is organized; informs match modules for jobs, mentorship, and donations with transparent scores and explanations."},
+    {"source": "Chi et al. (2012); Chu et al. (2019)", "finding": "Mentoring ecosystems with data mining and social networking improve confidence and readiness, aligning with mentorship flows in the MVP."},
+    {"source": "Market gap", "finding": "Vendors like Graduway or AffinaQuest cover parts of engagement/advancement but do not deliver a unified student-alumni-employer ecosystem that stays relevant post-graduation."}
+  ],
+  "proposedSolution": {
+    "overview": "StudentHub is a unified web ecosystem combining the strengths of LinkedIn, a university CRM, and an AI-driven career assistant. It fixes fragmented data and limited visibility for students, alumni, employers, and administrators.",
+    "dataFoundation": "Centralized JSON datasets mapped to a relational schema: profiles, skills, soft-skill scores, work experience, events, news interactions, job interests, mentorship data, employer postings, and every interaction captured for analytics and AI prompts.",
+    "roles": {
+      "students": "Dashboard with matched jobs, events, news, profile completeness, engagement scores, mentorship options, and an AI assistant for fit, gaps, interview prep, and cover notes.",
+      "employers": "Workspace to manage postings, see applicants, and view match scores with applicant summaries, competencies, and application trends for a cleaner talent pipeline.",
+      "admins": "Analytics for engagement, platform usage, event performance, satisfaction, system health, match acceptance, and readiness indicators (mentor, donor, applicant)."
+    },
+    "goals": [
+      "Improve employability and engagement through personalized recommendations.",
+      "Give administrators unified visibility into student and alumni behavior.",
+      "Provide employers with structured, high-quality talent pipelines.",
+      "Create a long-term professional identity that continues beyond graduation."
+    ]
+  },
+  "metricsForSuccess": {
+    "dataQuality": [">70% profile completion", "Updated career entries and reduced duplicates/missing fields"],
+    "engagement": ["Weekly active users", "Bookmarked jobs", "Events joined", "News viewed", "Mentorship interest", "Average session time", "Engagement_score/events_score/mentorship_score"],
+    "employability": ["Match rate accuracy based on acceptance/rejection", "Application-to-interview conversion", "Employer response times", "Distribution by match score tiers"],
+    "employerActivity": ["Job postings per month", "Active employers", "Employer satisfaction"],
+    "admin": ["Dashboard usage", "Successful data imports", "Insights generated", "System health indicators"]
+  },
+  "architecture": {
+    "business": "Supports student career exploration, alumni engagement, employer recruitment, AI-assisted mentorship, and admin monitoring in one flow to avoid fragmentation.",
+    "information": "Collections for profiles, skills, jobs, events, news, applications, matches, engagement scoring, preferences, mentorship, and admin interactions. Matching engine and AI assistant (OpenRouter) operate on structured endpoints with role-based access.",
+    "technology": "Hybrid storage: flexible JSON for ingestion/UI, relational tables for reporting. React UI talks to backend services via secured routes; role-based authentication separates students, employers, and admins while sharing a clean data foundation."
+  },
+  "dataDesign": {
+    "overview": "Synthetic but realistic JSON datasets mirror real records and map into relational entities for dashboards, AI prompts, and matching algorithms.",
+    "studentData": "Users plus roles/permissions, with soft-skill ratings, technical competency scores, employability tests, preferences, giving profile, engagement history, certifications. Added tables include Student_Competency_Scores, Student_Engagement_Summary, Student_Preferences, and Student_Giving_Profile.",
+    "behavioralLogic": [
+      "GPA, degree, work experience, and soft skills influence employability scores.",
+      "Event attendance increases engagement_score by weighted categories.",
+      "News interactions use duration/likes/bookmarks/tags to shape content patterns."
+    ],
+    "jobsAndOrganizations": "Job JSON captures required skills, tools, salary, responsibilities, and tags mapped to Jobs, Job_Skills, and Organizations. Events/news include audiences, difficulty, skill focus, and interaction logs.",
+    "matching": "Dedicated tables for job, mentorship, and donor matches with scores and JSON explanations for transparency.",
+    "analytics": "Reporting tables structure engagement and system health to power admin KPIs like WAU, employer participation, match acceptance, and profile completeness.",
+    "future": "Flexible enough for Canvas assignment integration, personal task boards, and AI-generated insights."
+  },
+  "dashboard": {
+    "link": "https://stuff-puma-48890563.figma.site/",
+    "student": "Shows profile completeness, engagement score, matched jobs with score breakdown, suggested events, news by interest, and shortcuts to AI assistant for fit, improvements, interview prep, and cover notes.",
+    "employer": "Displays postings, applicant counts, match quality, engagement from students, and Top Applicant Fit lists using match engine tables (Applications, Matched_Candidates, Student_Competency_Scores, Student_Preferences).",
+    "admin": "Visualizes WAU, student vs alumni engagement, event participation, news interactions, system health, satisfaction trends, match acceptance for jobs/mentorship, readiness indicators (mentor/donor/applicant), and response times.",
+    "dataIntegration": "Events, news, jobs, matches, and interactions (liked news, joined event, saved job) feed engagement metrics and recommendations in near real time.",
+    "insights": [
+      "Students who attend 1+ event and interact with 3+ news items have nearly double engagement scores.",
+      "Match accuracy improves when soft-skill and technical-skill profiles are complete.",
+      "Detailed job descriptions drive more high-quality matches than generic postings.",
+      "Mentorship interest rises when programs clearly list required skills and capacity."
+    ]
+  },
+  "ethics": {
+    "aiPrivacy": "AI receives only anonymized context (skills, experience, education, interests, preferences) and no personal identifiers.",
+    "consentControl": "Users choose what to share, can export or permanently delete data; account deletion removes associated records (FERPA/GDPR aligned).",
+    "accessibility": "Semantic HTML, ARIA-friendly structure, contrast, keyboard navigation, scalable typography, and planned voice navigation for future versions.",
+    "biasMitigation": "Match scores exclude sensitive attributes (gender, ethnicity, disability); recommendations rely on skills, experience, preferences, and behaviors.",
+    "principle": "Ethical by design: anonymous AI usage, user-controlled data, privacy safeguards, and inclusive accessibility."
+  },
+  "outcomes": "Unified student, alumni, employer, and engagement data turns fragmented records into a living ecosystem. Students get tailored recommendations; employers gain structured access to talent; admins see real-time engagement, satisfaction, and platform health. Ethical, privacy-first AI builds trust, and the shift to a lifetime digital identity tackles post-graduation disengagement.",
+  "nextSteps": "Extend lifelong value with personal task boards and LMS/Canvas integration, deepen AI explainability, expand data connectors, and harden production security and governance for a hosted rollout.",
+  "lessons": [
+    "Balance analysis with shipping the MVP; avoid research loops and build focused slices of value.",
+    "Big problems hide chains of smaller ones; solve the system (data, motivation, relevance, access, AI support).",
+    "Iterative development reveals gaps and informs design (engagement scoring variables, anonymized AI, employer response analytics).",
+    "A platform must deliver lasting value to drive return usage after graduation; design for lifelong relevance."
+  ],
+  "references": [
+    "AffinaQuest (2023). How CMU used predictive analytics to identify potential donors and volunteers (webinar recap).",
+    "Bryant University (2018). Predictive modeling of alumni donor behavior.",
+    "CASE (2022). CASE insights on alumni engagement: Key findings.",
+    "Chi, H., Jones, E. L., & Grandham, L. P. (2012). Smart alumni systems: Incorporating data mining and social networking for alumni outreach and mentoring.",
+    "Chu, K., Patterson, B., Sanders, T., & Clare, R. (2019). An alumni mentoring program: The impact on the career planning process for international graduate students.",
+    "Dang, L. (2023). Automating alumni information collection and network analysis for the University of Chicago�s Social Science Division.",
+    "Gomez-Cravioto, D. A., Khademi, A., & others. (2022). Supervised machine learning predictive analytics for alumni income.",
+    "Graduway (2022). University of Houston + CASE: Alumni engagement case study.",
+    "Jones, F., Mardis, M., & colleagues. (2017). Alumni tracking: Promising practices for collecting, analyzing, and reporting employment data.",
+    "Kumar, P., Kumar, G. R., & Verma, M. (2023). An alumni portal and tracking system.",
+    "O�Connor, A. (2022). Activating alumni engagement: The impact of alumni involvement on institutional strategic goals."
+  ]
+}

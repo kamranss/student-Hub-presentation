@@ -258,22 +258,39 @@ function renderEthicsV3(ethics) {
   if (!ethics) return;
   const aiList = document.getElementById("ethics-ai");
   const accessList = document.getElementById("ethics-accessibility");
-  const items = ethics.bullets || [];
+  const summaryEl = document.getElementById("ethics-summary");
+  const titleEl = document.getElementById("ethics-title");
+  const privacyPromise = document.getElementById("ethics-privacy-promise");
+  const accessibilityNote = document.getElementById("ethics-accessibility-note");
+
+  if (titleEl && ethics.title) titleEl.textContent = sanitizeText(ethics.title);
+  if (summaryEl && ethics.summary) summaryEl.textContent = sanitizeText(ethics.summary);
+
+  const aiItems = ethics.aiPrivacy || [];
   if (aiList) {
     aiList.innerHTML = "";
-    items.slice(0, 2).forEach((item) => {
+    aiItems.forEach((item) => {
       const li = document.createElement("li");
       li.textContent = sanitizeText(item);
       aiList.appendChild(li);
     });
   }
+
+  const accessItems = ethics.accessibility || [];
   if (accessList) {
     accessList.innerHTML = "";
-    items.slice(2).forEach((item) => {
+    accessItems.forEach((item) => {
       const li = document.createElement("li");
       li.textContent = sanitizeText(item);
       accessList.appendChild(li);
     });
+  }
+
+  if (privacyPromise) {
+    privacyPromise.textContent = sanitizeText(ethics.privacyPromise || "");
+  }
+  if (accessibilityNote) {
+    accessibilityNote.textContent = sanitizeText(ethics.inclusionPromise || "");
   }
 }
 
@@ -313,15 +330,35 @@ function renderAppendixV3(appendix) {
 }
 
 function applyHeroBackdrops(sections, fallbackHero) {
-  const hero = (id) => sections[id]?.hero || fallbackHero;
-  ["home", "problem", "research", "charter", "data", "architecture", "data-flow", "dashboard", "ethics", "lessons", "appendix"].forEach((id) => {
+  const hero = (id) => {
+    const hasHeroProp = sections[id] && Object.prototype.hasOwnProperty.call(sections[id], "hero");
+    if (hasHeroProp) return sections[id].hero;
+    // Only fall back to the meta hero for home; others stay clean if not defined.
+    return id === "home" ? fallbackHero : undefined;
+  };
+  ["home", "problem", "research", "solution", "charter", "data", "architecture", "data-flow", "dashboard", "ethics", "lessons", "appendix"].forEach((id) => {
     applySectionHero(id === "appendix" ? "extras" : id, hero(id));
   });
 }
 
 function applySectionHero(sectionId, heroUrl) {
   const section = document.getElementById(sectionId);
-  if (!section || !heroUrl) return;
+  if (!section) return;
+
+  const needsCustom =
+    !heroUrl &&
+    (sectionId === "ethics" ||
+      sectionId === "architecture" ||
+      sectionId === "home" ||
+      sectionId === "problem" ||
+      sectionId === "research" ||
+      sectionId === "solution" ||
+      sectionId === "data" ||
+      sectionId === "dashboard" ||
+      sectionId === "lessons" ||
+      sectionId === "appendix");
+  if (!heroUrl && !needsCustom) return;
+
   let hero = section.querySelector(".page-hero");
   if (!hero) {
     hero = document.createElement("div");
@@ -329,7 +366,189 @@ function applySectionHero(sectionId, heroUrl) {
     const first = section.firstElementChild;
     section.insertBefore(hero, first);
   }
-  hero.style.backgroundImage = `url(${heroUrl})`;
+
+  if (heroUrl) {
+    hero.style.backgroundImage = `url(${heroUrl})`;
+  } else if (sectionId === "home") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".home-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Executive Summary</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/1.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "problem") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".problem-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content problem-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Problem</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/2.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "research") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".research-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content research-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Research</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/3.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "solution") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".solution-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content solution-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Solution</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/4.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "data") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".data-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content data-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Data Design</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/5.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "dashboard") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".dashboard-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content dashboard-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Dashboard & Data Analysis</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/7.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "lessons") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".lessons-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content lessons-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Lessons Learned & Reflection</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/9.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "architecture") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".architecture-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "architecture-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="eyebrow">StudentHub</p>
+          <h3>Architecture</h3>
+        </div>
+        <div class="arch-illustration" aria-hidden="true">
+          <img src="assets/img/hero/6.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "appendix") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".appendix-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content appendix-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Appendix / Extra Section</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/10.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "ethics") {
+    hero.classList.add("hero-ethics");
+    if (!hero.querySelector(".ethics-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "ethics-hero-content";
+      overlay.innerHTML = `
+        <div class="ethics-left">
+          <p class="eyebrow">StudentHub</p>
+          <h3>Ethics & Trust</h3>
+          <p class="ethics-sub">Privacy-first, consent-led, and inclusive by default.</p>
+        </div>
+        <div class="ethics-illustration" aria-hidden="true">
+          <svg viewBox="0 0 320 260" role="presentation" focusable="false">
+            <defs>
+              <linearGradient id="ethicsShield" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e2e8f0"/>
+                <stop offset="100%" stop-color="#cbd5e1"/>
+              </linearGradient>
+              <linearGradient id="ethicsAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#7dd3fc"/>
+                <stop offset="100%" stop-color="#38bdf8"/>
+              </LinearGradient>
+            </defs>
+            <g>
+              <path d="M160 28 90 56v78c0 44 30 85 70 98 40-13 70-54 70-98V56l-70-28Z" fill="url(#ethicsShield)" stroke="#94a3b8" stroke-width="3" />
+              <path d="M132 123 152 142 202 94" fill="none" stroke="url(#ethicsAccent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="108" cy="182" r="14" fill="#38bdf8" opacity="0.8" />
+              <circle cx="210" cy="182" r="14" fill="#0ea5e9" opacity="0.8" />
+              <rect x="72" y="200" width="176" height="30" rx="12" ry="12" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="2" />
+            </g>
+          </svg>
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  }
   const container = section.querySelector(".container");
   if (container) container.style.position = "relative";
 }

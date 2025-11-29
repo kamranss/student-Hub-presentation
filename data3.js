@@ -14,7 +14,7 @@ const projectMeta = {
 const homeSection = {
   id: "home",
   title: "StudentHub - Project Overview",
-  hero: "assets/img/hero/home2.png",
+  hero: "",
   intro: "A unified alumni + student platform with analytics, matching, and role-based dashboards.",
   executiveSummary: {
     title: "Executive summary",
@@ -31,7 +31,7 @@ const homeSection = {
 const problemSection = {
   id: "problem",
   title: "Problem",
-  hero: "assets/img/hero/problem2.png",
+  hero: "",
   overview:
     "Final problem: the university cannot effectively match alumni to relevant job opportunities because career data is fragmented, outdated, and poorly tracked after graduation.",
   bullets: [
@@ -60,7 +60,7 @@ const problemSection = {
 const researchSection = {
   id: "research",
   title: "Research and insights",
-  hero: "assets/img/hero/exacutive-summary2.png",
+  hero: "",
   summary: "Reports show fragmented alumni data and inconsistent engagement tracking; integrated mentoring and analytics are the gap.",
   keyFindings: [
     "Structured engagement tracking beats manual reporting.",
@@ -74,7 +74,7 @@ const researchSection = {
 const solutionSection = {
   id: "solution",
   title: "Proposed solution",
-  hero: "assets/img/hero/solution2.png",
+  hero: "",
   intro: "A university-owned LinkedIn plus analytics layer that stays relevant from first semester through alumni years.",
   coreGoals: [
     "Unify student and alumni data for analytics and AI recommendations.",
@@ -112,7 +112,7 @@ const solutionSection = {
 const architectureSection = {
   id: "architecture",
   title: "Architecture",
-  hero: "assets/img/hero/architectture3.png",
+  hero: "",
   layers: {
     business: [
       "Collect and clean alumni plus student data; keep it updated.",
@@ -128,7 +128,7 @@ const architectureSection = {
     ],
   },
   diagrams: {
-    enterprise: "assets/img/hero/architecture.png", // replace with real diagram if available
+    enterprise: "assets/img/hero/architecture.png", 
     integration: "assets/img/hero/architecture.png",
     tech: "assets/img/hero/architecture.png",
   },
@@ -139,7 +139,7 @@ const architectureSection = {
 const dataSection = {
   id: "data",
   title: "Data and dataset",
-  hero: "assets/img/hero/exacutive-summary2.png",
+  hero: "",
   datasetSummary: "Synthetic dataset of about 2,000 alumni-like records (2000-2025) with realistic majors, roles, and locations.",
   mainEntities: [
     "Identity: IDs, names, locations, graduation year.",
@@ -161,7 +161,7 @@ const dataSection = {
 const dashboardSection = {
   id: "dashboard",
   title: "Dashboards",
-  hero: "assets/img/hero/exacutive-summary2.png",
+  hero: "",
   overview: "Role-based dashboards translate raw data into actions.",
   studentView: {
     title: "Student",
@@ -195,20 +195,30 @@ const dashboardSection = {
 const ethicsSection = {
   id: "ethics",
   title: "Ethics",
-  hero: "assets/img/hero/exacutive-summary2.png",
-  bullets: [
-    "AI prompts are anonymized; no personal identifiers sent.",
-    "Users control data sharing; export or delete on request.",
-    "Accessibility by design: keyboard, contrast, screen readers.",
-    "Matching ignores sensitive attributes; focuses on skills, experience, and engagement.",
+  hero: "",
+  summary:
+    "Building a student and alumni platform demands transparent, consent-first data practices, anonymous AI, and inclusive access from day one.",
+  aiPrivacy: [
+    "AI never receives personal identifiers; it only processes skills, experience level, education, certifications, interests, and role preferences.",
+    "Profile visibility is user-controlled; students and alumni decide what employers see, and can export or permanently delete their data (FERPA/GDPR aligned).",
+    "Account deletion removes associated records; consent and data life cycle are enforced across the stack.",
   ],
+  accessibility: [
+    "Accessible by design: semantic structure, ARIA support, readable contrast, keyboard navigation, scalable typography.",
+    "Voice navigation is planned so users can open pages, search opportunities, or trigger actions by speaking.",
+    "Bias safeguards: match scores never use gender, ethnicity, or disability status—only skills, experience, preferences, and engagement behaviors.",
+  ],
+  privacyPromise:
+    "Anonymous AI usage, explicit consent, export/delete controls, and role-based visibility keep student and alumni data protected.",
+  inclusionPromise:
+    "Inclusive UX with accessibility defaults today and voice navigation on the roadmap ensures everyone can benefit from StudentHub.",
 };
 
 // Lessons
 const lessonsSection = {
   id: "lessons",
   title: "Lessons learned",
-  hero: "assets/img/hero/lessons-learned2.png",
+  hero: "",
   bullets: [
     "Building the MVP exposed real gaps beyond analysis.",
     "Solving alumni engagement needs data quality, UX, and motivation together.",
@@ -222,7 +232,7 @@ const lessonsSection = {
 const appendixSection = {
   id: "appendix",
   title: "Appendix",
-  hero: "assets/img/hero/exacutive-summary2.png",
+  hero: "",
   links: [
     { label: "GitHub repository", url: "#" },
     { label: "Full ERD image", url: "#" },

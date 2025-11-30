@@ -10,7 +10,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo-block">
-        <img class="logo-img" src="assets/img/logo3.png" alt="StudentHub logo" />
+        <img class="logo-img" src="assets/img/logo4.png" alt="StudentHub logo" />
         <div class="logo-text">
           <h1 id="site-title">StudentHub</h1>
           <p id="site-subtitle">Master's Research Project - Global Horizon University (GHU)</p>
@@ -21,6 +21,7 @@
       <a href="#problem" data-page="problem">Problem</a>
       <a href="#research" data-page="research">Research</a>
       <a href="#solution" data-page="solution">Solution</a>
+      <a href="#charter" data-page="charter">Project Charter</a>
       <a href="#data" data-page="data">Data</a>
       <a href="#architecture" data-page="architecture">Architecture</a>
       <a href="#dashboard" data-page="dashboard">Dashboard</a>
@@ -46,7 +47,7 @@
         <div class="hero-meta">
           <div>
             <span class="label">Student</span>
-            <span class="value">[Your Name Here]</span>
+            <span class="value">Kamran Suleymanov</span>
           </div>
           <div>
             <span class="label">Course</span>
@@ -54,13 +55,13 @@
           </div>
           <div>
             <span class="label">Institution</span>
-            <span class="value">Global Horizon University (Case)</span>
+            <span class="value">Saint Louis University</span>
           </div>
         </div>
         <a href="#problem" data-page="problem" class="btn-primary page-link">Start with the Problem</a>
       </div>
       <div class="hero-card">
-        <h3>Problem Snapshot</h3>
+        <h3>Problem summary</h3>
         <p id="hero-problem">
           Loading problem overview...
         </p>
@@ -139,8 +140,34 @@
           </ul>
         </div>
       </div>
+
+      <div class="research-matrix-block">
+        <h3>Research Matrix</h3>
+        <div id="research-matrix" class="matrix-grid"></div>
+      </div>
+
+      <div class="research-journal-block">
+        <h3>Market Research & Journal</h3>
+        <div id="research-journal" class="journal-grid"></div>
+      </div>
+
+      <div class="research-market-review">
+        <h3>Market Review (Gartner Peer Insights)</h3>
+        <div id="research-market-card" class="market-card"></div>
+      </div>
     </div>
   </section>
+
+  <div id="research-modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <button class="modal-close" aria-label="Close research details">×</button>
+      <p class="modal-eyebrow" id="modal-theme"></p>
+      <h3 id="modal-source"></h3>
+      <p id="modal-insight"></p>
+      <p class="modal-implication" id="modal-implication"></p>
+    </div>
+  </div>
 
   <!-- Proposed Solution -->
   <section id="solution" class="section page" data-page="solution">
@@ -208,21 +235,135 @@
   </section>
 
   <!-- Project Charter (placeholder-ready) -->
-  <section id="charter" class="section alt page" data-page="solution">
+  <section id="charter" class="section alt page" data-page="charter">
     <div class="container">
       <h2>Project Charter</h2>
-      <div class="two-col">
-        <div>
-          <h3>Scope & Objectives</h3>
-          <p id="charter-scope">
-            Add scope, in/out-of-scope, and key objectives here. Use this spot for the final charter text when ready.
-          </p>
+
+      <div class="charter-grid">
+        <div class="charter-card">
+          <h3>Project Title</h3>
+          <p class="charter-lead">StudentHUB – Unified Alumni–Student Engagement, Matching & Analytics Platform</p>
         </div>
-        <div>
-          <h3>Constraints & Assumptions</h3>
-          <p id="charter-constraints">
-            Capture assumptions, constraints, dependencies, and success criteria. Replace this placeholder once data is available.
-          </p>
+        <div class="charter-card">
+          <h3>Purpose / Background</h3>
+          <p>Universities struggle with fragmented alumni data and no unified way to track outcomes. After graduation, engagement drops because systems are scattered and lack value-driven features. StudentHUB is designed as a lifetime digital companion to unify jobs, mentorship, events, news, skills, analytics, and AI recommendations before and after graduation.</p>
+        </div>
+        <div class="charter-card">
+          <h3>Problem Statement</h3>
+          <p>GHU lacks accurate, updated alumni career data and a unified system to match students/alumni with jobs, mentorship, or personalized opportunities. Engagement disappears after graduation due to scattered systems and missing value.</p>
+        </div>
+      </div>
+
+      <div class="charter-grid three">
+        <div class="charter-card">
+          <h3>Objectives</h3>
+          <ul>
+            <li>Centralize profiles, skills, events, news, jobs, and mentorship.</li>
+            <li>AI-powered matching for jobs/mentors/donors using skills and engagement signals.</li>
+            <li>Role-based portals: Students, Employers, University Staff.</li>
+            <li>Admin dashboards for engagement, system health, recommendations.</li>
+            <li>Keep alumni active post-graduation (LinkedIn-like continuity).</li>
+            <li>Scalable architecture for predictive analytics.</li>
+          </ul>
+        </div>
+        <div class="charter-card">
+          <h3>Scope (In)</h3>
+          <ul>
+            <li>Student dashboard: jobs, events, news, skills, applications, engagement.</li>
+            <li>Employer workspace: postings, candidate analytics.</li>
+            <li>Admin portal: reporting, matching engine, recommendations.</li>
+            <li>AI quick tools: fit check, profile tips, interview questions, cover note.</li>
+            <li>Mentorship discovery + matching.</li>
+            <li>Personalized events & news.</li>
+            <li>Synthetic dataset (2000+ records).</li>
+            <li>Matching engine (jobs, mentorship, donation); engagement score + insights.</li>
+          </ul>
+        </div>
+        <div class="charter-card">
+          <h3>Scope (Out, MVP)</h3>
+          <ul>
+            <li>Full mobile app.</li>
+            <li>Real-time messaging & chat.</li>
+            <li>Canvas/Blackboard assignment integration.</li>
+            <li>External API connectors (LinkedIn, Indeed, CRM sync).</li>
+            <li>Blockchain credential verification.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="charter-grid three">
+        <div class="charter-card">
+          <h3>Key Deliverables</h3>
+          <ul>
+            <li>React-based prototype (Student, Employer, Admin).</li>
+            <li>Synthetic dataset (JSON/CSV) for dashboards and matching.</li>
+            <li>ERD + Data Model + Architecture diagrams.</li>
+            <li>Admin dashboards: Engagement, Recommendations, System Summary.</li>
+            <li>AI-powered quick analysis tools.</li>
+            <li>Project website (GitHub Pages) + final academic paper (IEEE-style).</li>
+          </ul>
+        </div>
+        <div class="charter-card">
+          <h3>Success Criteria</h3>
+          <ul>
+            <li>95% of profiles reach 80%+ completeness.</li>
+            <li>80% accuracy in AI job/mentor matching.</li>
+            <li>Dashboards show measurable engagement trends.</li>
+            <li>Role-based access works end-to-end.</li>
+            <li>Insights support solution goals (events, jobs, skills).</li>
+            <li>Students continue usage beyond academic period.</li>
+          </ul>
+        </div>
+        <div class="charter-card">
+          <h3>Risks & Constraints</h3>
+          <ul>
+            <li>Alumni adoption may be slow without clear value.</li>
+            <li>Synthetic data may not mirror real patterns.</li>
+            <li>Time limits full integration (mobile, CRM connectors).</li>
+            <li>AI accuracy depends on data quality; privacy/bias management needed.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="charter-grid two">
+        <div class="charter-card">
+          <h3>Stakeholders & Roles</h3>
+          <table class="charter-table">
+            <thead>
+              <tr>
+                <th>Stakeholder</th>
+                <th>Role / Responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Students / Alumni</td><td>Use platform for jobs, events, mentoring, skill tracking.</td></tr>
+              <tr><td>Employers</td><td>Post jobs, review candidates, analyze engagement.</td></tr>
+              <tr><td>University Staff</td><td>Manage events, news, dashboards, matching, analytics.</td></tr>
+              <tr><td>Instructors & Professors</td><td>Support mentorship matching, identify donors.</td></tr>
+              <tr><td>Admin (System Owner)</td><td>Manages permissions, reporting, architecture controls.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="charter-card">
+          <h3>Timeline / Milestones</h3>
+          <table class="charter-table">
+            <thead>
+              <tr>
+                <th>Milestone</th>
+                <th>Completion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Requirements analysis & research</td><td>Week 1–2</td></tr>
+              <tr><td>Dataset creation (synthetic)</td><td>Week 3–4</td></tr>
+              <tr><td>ERD + Architecture</td><td>Week 4</td></tr>
+              <tr><td>React prototype build</td><td>Week 5–8</td></tr>
+              <tr><td>Dashboards & analytics</td><td>Week 9</td></tr>
+              <tr><td>Matching engine</td><td>Week 10</td></tr>
+              <tr><td>Website creation</td><td>Week 11</td></tr>
+              <tr><td>Final report + presentation</td><td>Week 12</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -232,9 +373,6 @@
   <section id="data" class="section alt page" data-page="data">
     <div class="container">
       <ul class="card-list" id="data-main-entities"></ul>
-
-      <div class="highlight-box" id="data-generation">Loading generation logic...</div>
-      <div class="highlight-box" id="data-value">Loading value for solution...</div>
 
       <figure class="figure">
         <img
@@ -266,14 +404,24 @@
             Loading technology architecture...
           </p>
           <figure class="figure">
-            <!-- <img
+            <img
               class="lightbox-img"
               src="assets/img/Conceptual%20architecture.png"
               data-full="assets/img/Conceptual%20architecture.png"
               data-caption="Enterprise architecture for StudentHub."
               alt="Enterprise architecture diagram"
-            /> -->
+            />
             <figcaption>Figure A1. Enterprise architecture for StudentHub.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/Solution-Architecture.png"
+              data-full="assets/img/Solution-Architecture.png"
+              data-caption="Solution architecture view for StudentHub."
+              alt="Solution architecture diagram"
+            />
+            <figcaption>Figure A2. Solution architecture view for StudentHub.</figcaption>
           </figure>
         </div>
         <div>
@@ -291,6 +439,18 @@
           <p id="data-matching">Loading matching design...</p>
           <p id="data-analytics">Loading analytics design...</p>
           <p id="data-future">Loading future design...</p>
+          <div class="highlight-box" id="data-generation">Loading generation logic...</div>
+          <div class="highlight-box" id="data-value">Loading value for solution...</div>
+          <figure class="figure">
+            <img
+              class="lightbox-img"
+              src="assets/img/StudentHUB_ERD.png"
+              data-full="assets/img/StudentHUB_ERD.png"
+              data-caption="ERD structure for StudentHub data model."
+              alt="ERD diagram"
+            />
+            <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
+          </figure>
           <p class="small-note">
             Synthetic data rules and relational mappings are summarized in the report appendices.
           </p>
@@ -442,13 +602,13 @@
         </div>
         <div class="extras-card">
           <h3>GitHub Repository</h3>
-          <p>Add your project repo link here once the site is pushed to GitHub Pages.</p>
-          <a href="#" class="btn-secondary disabled" aria-disabled="true">Coming Soon</a>
+          <p>Github project repo link.</p>
+          <a href="https://github.com/kamranss/alumni-connect-mvp" class="btn-secondary disabled" aria-disabled="true">Coming Soon</a>
         </div>
         <div class="extras-card">
-          <h3>Dashboard Link</h3>
-          <p>Link to your live/hosted dashboard (e.g., Streamlit, Power BI, or other).</p>
-          <a id="extras-dashboard" href="#" class="btn-secondary disabled" aria-disabled="true">Add Dashboard URL</a>
+          <h3>MVP app - all MVP related features included</h3>
+          <p>Link to  live/hosted app (Vercel).</p>
+          <a  href="https://alumni-connect-mvp.vercel.app/login" class="btn-secondary disabled" aria-disabled="true">APP</a>
         </div>
       </div>
       <div class="small-note" id="table-note"></div>
@@ -458,7 +618,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>StudentHub - Master's Research Project</p>
-      <p class="footnote">Built as a portfolio-ready project site for course presentation and future employers.</p>
+      <p class="footnote">Built as a portfolio-ready project site for course presentation.</p>
     </div>
   </footer>
 

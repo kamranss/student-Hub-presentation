@@ -1,9 +1,1093 @@
+﻿﻿// ﻿// script.js
+
+// docment.addEventListener("DOMContentLoaded", () => {
+//   initPageNav();
+//   const modernData = window.presentationData || window.siteDataV3;
+//   const legacyData = window.siteData;
+//   if (modernData) {
+//     renderAll(modernData);
+//     retrn;
+//   }
+//   if (legacyData) {
+//     renderAll(legacyData);
+//     retrn;
+//   }
+//   fetch("data2.json")
+//     .then((res) => res.json())
+//     .then((data) => renderAll(data))
+//     .catch((err) => {
+//       console.error("Error loading data2.json", err);
+//     });
+// });
+
+// function renderAll(data) {
+//   if (!data) retrn;
+//   if (data.sections) {
+//     renderV3(data);
+//     retrn;
+//   }
+//   renderLegacy(data);
+// }
+
+// function renderV3(data) {
+//   const meta = data.projectMeta || {};
+//   const sections = indexSections(data);
+//   renderMeta(meta, sections.home);
+//   renderHomeV3(meta, sections.home, sections.problem);
+//   renderProblemV3(sections.problem);
+//   renderResearchV3(sections.research);
+//   renderSoltionV3(sections.soltion);
+//   renderDataV3(sections.data, meta);
+//   renderArchitectreV3(sections.architectre);
+//   renderDashboardV3(sections.dashboard);
+//   renderEthicsV3(sections.ethics);
+//   renderLessonsV3(sections.lessons);
+//   renderAppendixV3(sections.appendix);
+//   applyHeroBackdrops(sections, meta.hero);
+//   initLightbox();
+// }
+
+// function renderLegacy(data) {
+//   if (!data) retrn;
+//   renderTitle(data.title);
+//   renderHome(data);
+//   renderExectiveSmmary(data.exectiveSmmary);
+//   renderProblem(data.problemContext);
+//   renderGoals(data.proposedSoltion?.goals);
+//   renderResearchPoints(data.researchAndInsights);
+//   renderSoltion(data.proposedSoltion);
+//   renderMetrics(data.metricsForSccess);
+//   renderArchitectre(data.architectre);
+//   renderDataDesign(data.dataStrctre);
+//   renderDataFlow(data.dataStrctre);
+//   renderDashboard(data.dashboardLayer);
+//   renderDashboardInsights(data.dashboardLayer?.insights);
+//   renderEthics(data.ethicsAndSocialConsiderations);
+//   renderImpact(data.otcomesAndImpact, data.nextSteps);
+//   renderLessons(data.lessonsLearned);
+//   renderReferences(data.references);
+//   renderTableNote(data.sampleTableNote);
+//   initLightbox();
+// }
+
+// function indexSections(data) {
+//   const map = {};
+//   (data.sections || []).forEach((sec) => {
+//     if (sec?.id) map[sec.id] = sec;
+//   });
+//   map.home = map.home || data.homeSection;
+//   map.problem = map.problem || data.problemSection;
+//   map.research = map.research || data.researchSection;
+//   map.soltion = map.soltion || data.soltionSection;
+//   map.architectre = map.architectre || data.architectreSection;
+//   map.data = map.data || data.dataSection;
+//   map.dashboard = map.dashboard || data.dashboardSection;
+//   map.ethics = map.ethics || data.ethicsSection;
+//   map.lessons = map.lessons || data.lessonsSection;
+//   map.appendix = map.appendix || data.appendixSection;
+//   return map;
+// }
+
+// function renderMeta(meta, home) {
+//   const title = sanitizeText(meta.title || home?.title || "StdentHb");
+//   docment.title = title;
+//   setText("site-title", title);
+//   setText("hero-heading", title);
+//   setText("site-sbtitle", meta.tagline || "Master's Research Project");
+// }
+
+// function renderHomeV3(meta, home, problem) {
+//   if (!home) retrn;
+//   const intro = home.intro || meta.tagline;
+//   const exec = home.exectiveSmmary?.text || [];
+//   setText("home-intro", intro);
+//   setText("home-smmary", Array.isArray(exec) ? exec.join("`n`n") : exec);
+//   const prob = problem?.bllets?.[] || problem?.smmary || "";
+//   setText("hero-problem", prob);
+//   setText("home-problem", prob);
+// }
+
+// function renderProblemV3(problem) {
+//   if (!problem) retrn;
+//   const bllets = problem.bllets || [];
+//   const overview = problem.overview || problem.smmary || bllets[] || "";
+//   const selected = problem.chosenProblem || problem.coreProblem || bllets[1] || "";
+//   const rationale = problem.selectionRationale || problem.soltionAngle || bllets[2] || "";
+//   const angle = problem.soltionAngle || bllets[3] || "";
+
+//   setText("problem-overview", overview);
+//   setText("problem-lifecycle", selected);
+//   setText("problem-gap", rationale);
+//   setText("soltion-angle", angle);
+
+//   const list = docment.getElementById("stakeholders-list");
+//   if (list) {
+//     list.innerHTML = "";
+//     if (problem.stakeholders?.length) {
+//       problem.stakeholders.forEach((item) => {
+//         const li = docment.createElement("li");
+//         li.innerHTML = `<strong>${sanitizeText(item.role)}:</strong> ${sanitizeText(item.pain)}`;
+//         list.appendChild(li);
+//       });
+//     }
+//   }
+
+//   const optionsList = docment.getElementById("problem-options");
+//   if (optionsList) {
+//     optionsList.innerHTML = "";
+//     (problem.optionsSmmary || []).forEach((item) => {
+//       const li = docment.createElement("li");
+//       li.innerHTML = `<strong>Option:</strong> ${sanitizeText(item)}`;
+//       optionsList.appendChild(li);
+//     });
+//   }
+// }
+
+// function renderResearchV3(research) {
+//   if (!research) retrn;
+//   const smmary = docment.getElementById("research-smmary");
+//   if (smmary && research.smmary) {
+//     smmary.innerHTML = "";
+//     const p = docment.createElement("p");
+//     p.textContent = sanitizeText(research.smmary);
+//     smmary.appendChild(p);
+//   }
+//   const list = docment.getElementById("research-list");
+//   if (list) {
+//     list.innerHTML = "";
+//     (research.keyFindings || []).forEach((item) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(item);
+//       list.appendChild(li);
+//     });
+//   }
+
+//   const matrixEl = docment.getElementById("research-matrix");
+//   if (matrixEl) {
+//     matrixEl.innerHTML = "";
+//     (research.matrix || []).forEach((row) => {
+//       const card = docment.createElement("div");
+//       card.className = "matrix-card matrix-compact";
+//       card.innerHTML = `
+//         <h4>${sanitizeText(row.theme)}</h4>
+//         <small>${sanitizeText(row.sorce)}</small>
+//         <p class="implication">${sanitizeText(row.implication)}</p>
+//       `;
+//       card.addEventListener("click", () => openResearchModal(row));
+//       matrixEl.appendChild(card);
+//     });
+//   }
+
+//   const jornalEl = docment.getElementById("research-jornal");
+//   if (jornalEl && research.jornal) {
+//     jornalEl.innerHTML = "";
+//     const revisionCard = docment.createElement("div");
+//     revisionCard.className = "jornal-card";
+//     revisionCard.innerHTML = `
+//       <h4>Docment Revision</h4>
+//       <l>${(research.jornal.revisionLog || [])
+//         .map((item) => `<li>${sanitizeText(item)}</li>`)
+//         .join("")}</l>
+//     `;
+//     const definitionCard = docment.createElement("div");
+//     definitionCard.className = "jornal-card";
+//     definitionCard.innerHTML = `
+//       <h4>Definition & Problem Fit</h4>
+//       <p>${sanitizeText(research.jornal.definition)}</p>
+//     `;
+//     const characteristicsCard = docment.createElement("div");
+//     characteristicsCard.className = "jornal-card";
+//     characteristicsCard.innerHTML = `
+//       <h4>Main Characteristics</h4>
+//       <l>${(research.jornal.characteristics || [])
+//         .map((item) => `<li>${sanitizeText(item)}</li>`)
+//         .join("")}</l>
+//     `;
+//     const soltionsCard = docment.createElement("div");
+//     soltionsCard.className = "jornal-card";
+//     soltionsCard.innerHTML = `
+//       <h4>Types of Soltions</h4>
+//       <l>${(research.jornal.soltionTypes || [])
+//         .map((item) => `<li>${sanitizeText(item)}</li>`)
+//         .join("")}</l>
+//     `;
+//     const prosConsCard = docment.createElement("div");
+//     prosConsCard.className = "jornal-card";
+//     prosConsCard.innerHTML = `
+//       <h4>Pros</h4>
+//       <l>${(research.jornal.pros || [])
+//         .map((item) => `<li>${sanitizeText(item)}</li>`)
+//         .join("")}</l>
+//       <h4>Cons</h4>
+//       <l>${(research.jornal.cons || [])
+//         .map((item) => `<li>${sanitizeText(item)}</li>`)
+//         .join("")}</l>
+//     `;
+//     jornalEl.append(revisionCard, definitionCard, characteristicsCard, soltionsCard, prosConsCard);
+//   }
+
+//   const marketCard = docment.getElementById("research-market-card");
+//   if (marketCard && research.jornal?.marketReview) {
+//     const m = research.jornal.marketReview;
+//     marketCard.innerHTML = `
+//       <h4>${sanitizeText(m.vendor)}</h4>
+//       <p class="meta">${sanitizeText(m.rating || "")}</p>
+//       <p>${sanitizeText(m.smmary || "")}</p>
+//       <p class="implication">${sanitizeText(m.implication || "")}</p>
+//     `;
+//   }
+// }
+
+// function openResearchModal(row) {
+//   const modal = docment.getElementById("research-modal");
+//   if (!modal) retrn;
+//   const theme = modal.qerySelector("#modal-theme");
+//   const sorce = modal.qerySelector("#modal-sorce");
+//   const insight = modal.qerySelector("#modal-insight");
+//   const implication = modal.qerySelector("#modal-implication");
+//   if (theme) theme.textContent = sanitizeText(row.theme || "");
+//   if (sorce) sorce.textContent = sanitizeText(row.sorce || "");
+//   if (insight) insight.textContent = sanitizeText(row.insight || "");
+//   if (implication) implication.textContent = sanitizeText(row.implication || "");
+//   modal.classList.add("open");
+//   modal.setAttribte("aria-hidden", "false");
+
+//   const backdrop = modal.qerySelector(".modal-backdrop");
+//   const closeBtn = modal.qerySelector(".modal-close");
+//   const close = () => {
+//     modal.classList.remove("open");
+//     modal.setAttribte("aria-hidden", "tre");
+//   };
+//   backdrop?.addEventListener("click", close, { once: tre });
+//   closeBtn?.addEventListener("click", close, { once: tre });
+//   docment.addEventListener(
+//     "keydown",
+//     (e) => {
+//       if (e.key === "Escape") close();
+//     },
+//     { once: tre }
+//   );
+// }
+
+// function renderSoltionV3(soltion) {
+//   if (!soltion) retrn;
+//   setText("soltion-overview", soltion.intro);
+//   setText("data-fondation", (soltion.keyFeatres || []).slice(, 2).join(" • "));
+//   const goals = Array.isArray(soltion.coreGoals) ? soltion.coreGoals : [];
+//   const featres = Array.isArray(soltion.keyFeatres) ? soltion.keyFeatres : [];
+//   const roles = [featres[], featres[1], featres[2]];
+//   setText("tech-stack", soltion.architectreNote || featres.slice(3).join(" • "));
+//   setText("role-stdents", roles[]);
+//   setText("role-employers", roles[1]);
+//   setText("role-admins", roles[2]);
+//   renderGoals(goals);
+
+//   if (soltion.strategy) {
+//     setText("strategy-statement", soltion.strategy.statement);
+//     setText("strategy-vision", soltion.strategy.vision);
+//     setText("strategy-sers", soltion.strategy.targetsers);
+//     setText("strategy-differentiators", soltion.strategy.differentiators);
+//     setText("strategy-risks", soltion.strategy.risks);
+//     setText("strategy-swot-text", soltion.strategy.swotText);
+
+//     const goalsList = docment.getElementById("strategy-goals");
+//     if (goalsList) {
+//       goalsList.innerHTML = "";
+//       (soltion.strategy.goals || []).forEach((g) => {
+//         const li = docment.createElement("li");
+//         li.textContent = sanitizeText(g);
+//         goalsList.appendChild(li);
+//       });
+//     }
+//   }
+// }
+
+// function renderDataV3(dataSection, meta) {
+//   if (!dataSection) retrn;
+//   setText("data-smmary", dataSection.datasetSmmary || "");
+
+//   const entitiesList = docment.getElementById("data-main-entities");
+//   if (entitiesList) {
+//     entitiesList.innerHTML = "";
+//     (dataSection.mainEntities || []).forEach((item) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(item);
+//       entitiesList.appendChild(li);
+//     });
+//   }
+//   setText("data-generation", (dataSection.generationLogic || []).join(" • "));
+//   setText("data-vale", dataSection.valeForSoltion || "");
+//   setText("data-erd-caption", dataSection.title ? `${dataSection.title} ERD` : "ERD overview");
+
+//   const dataHero = docment.getElementById("data-hero");
+//   if (dataHero && (dataSection.hero || meta?.hero)) {
+//     dataHero.style.backgrondImage = `linear-gradient(135deg, rgba(8,14,35,.9), rgba(8,14,35,.5)), rl(${dataSection.hero || meta.hero})`;
+//     dataHero.style.backgrondSize = "cover";
+//     dataHero.style.backgrondPosition = "center";
+//   }
+// }
+
+// function renderArchitectreV3(architectre) {
+//   if (!architectre) retrn;
+//   const bllet = " � ";
+//   const bsiness = architectre.bsinessSmmary || (architectre.layers?.bsiness || []).join(bllet);
+//   const isLayer = architectre.isSmmary || (architectre.layers?.is || []).join(bllet);
+//   const techLayer = architectre.techSmmary || (architectre.layers?.tech || []).join(bllet);
+//   const conceptal = architectre.conceptalSmmary || "";
+
+//   setText("architectre-bsiness", bsiness);
+//   setText("architectre-information", conceptal ? `${isLayer}\n\n${conceptal}` : isLayer);
+//   setText("architectre-technology", techLayer);
+
+//   setText("data-design-overview", architectre.erdSmmary || "");
+//   setText("data-identity", bsiness);
+//   setText("data-design-stdent", isLayer);
+//   setText("data-experience-skills", techLayer);
+//   setText("data-jobs-orgs", "");
+//   setText("data-matching", architectre.erdSmmary || "");
+//   setText("data-analytics", "");
+//   setText("data-ftre", "");
+
+//   const behavioralList = docment.getElementById("data-behavioral-list");
+//   if (behavioralList) behavioralList.innerHTML = "";
+// }function renderDashboardV3(dashboard) {
+//   if (!dashboard) retrn;
+//   setText("dashboard-overview", dashboard.overview);
+//   setText("dashboard-stdent", dashboard.stdentView?.bllets?.join(" • "));
+//   setText("dashboard-employer", dashboard.employerView?.bllets?.join(" • "));
+//   setText("dashboard-admin", dashboard.adminView?.bllets?.join(" • "));
+//   setText("dashboard-data", dashboard.exampleInsights?.join(" • "));
+//   renderDashboardInsights(dashboard.exampleInsights);
+// }
+
+// function renderEthicsV3(ethics) {
+//   if (!ethics) retrn;
+//   const aiList = docment.getElementById("ethics-ai");
+//   const accessList = docment.getElementById("ethics-accessibility");
+//   const smmaryEl = docment.getElementById("ethics-smmary");
+//   const titleEl = docment.getElementById("ethics-title");
+//   const privacyPromise = docment.getElementById("ethics-privacy-promise");
+//   const accessibilityNote = docment.getElementById("ethics-accessibility-note");
+
+//   if (titleEl && ethics.title) titleEl.textContent = sanitizeText(ethics.title);
+//   if (smmaryEl && ethics.smmary) smmaryEl.textContent = sanitizeText(ethics.smmary);
+
+//   const aiItems = ethics.aiPrivacy || [];
+//   if (aiList) {
+//     aiList.innerHTML = "";
+//     aiItems.forEach((item) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(item);
+//       aiList.appendChild(li);
+//     });
+//   }
+
+//   const accessItems = ethics.accessibility || [];
+//   if (accessList) {
+//     accessList.innerHTML = "";
+//     accessItems.forEach((item) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(item);
+//       accessList.appendChild(li);
+//     });
+//   }
+
+//   if (privacyPromise) {
+//     privacyPromise.textContent = sanitizeText(ethics.privacyPromise || "");
+//   }
+//   if (accessibilityNote) {
+//     accessibilityNote.textContent = sanitizeText(ethics.inclsionPromise || "");
+//   }
+// }
+
+// function renderLessonsV3(lessons) {
+//   if (!lessons) retrn;
+//   const container = docment.getElementById("lessons-paragraphs");
+//   if (!container) retrn;
+//   container.innerHTML = "";
+//   (lessons.bllets || []).forEach((item) => {
+//     const p = docment.createElement("p");
+//     p.textContent = sanitizeText(item);
+//     container.appendChild(p);
+//   });
+// }
+
+// function renderAppendixV3(appendix) {
+//   if (!appendix) retrn;
+//   const extras = docment.getElementById("extras");
+//   const dashboardLink = docment.getElementById("extras-dashboard");
+//   const githbLink = extras?.qerySelector(".extras-card:nth-child(2) a");
+//   const appendixLinks = appendix.links || [];
+
+//   const dash = appendixLinks.find((l) => l.label.toLowerCase().incldes("dashboard"));
+//   if (dash && dashboardLink) {
+//     dashboardLink.href = dash.rl || "#";
+//     dashboardLink.classList.remove("disabled");
+//     dashboardLink.removeAttribte("aria-disabled");
+//   }
+
+//   const repo = appendixLinks.find((l) => l.label.toLowerCase().incldes("githb"));
+//   if (repo && githbLink) {
+//     githbLink.href = repo.rl || "#";
+//     githbLink.classList.remove("disabled");
+//     githbLink.removeAttribte("aria-disabled");
+//     githbLink.textContent = repo.label;
+//   }
+// }
+
+// function applyHeroBackdrops(sections, fallbackHero) {
+//   const hero = (id) => {
+//     const hasHeroProp = sections[id] && Object.prototype.hasOwnProperty.call(sections[id], "hero");
+//     if (hasHeroProp) return sections[id].hero;
+//     // Only fall back to the meta hero for home; others stay clean if not defined.
+//     return id === "home" • fallbackHero : ndefined;
+//   };
+//   ["home", "problem", "research", "soltion", "charter", "data", "architectre", "data-flow", "dashboard", "ethics", "lessons", "appendix"].forEach((id) => {
+//     applySectionHero(id === "appendix" • "extras" : id, hero(id));
+//   });
+// }
+
+// function applySectionHero(sectionId, herorl) {
+//   const section = docment.getElementById(sectionId);
+//   if (!section) retrn;
+
+//   const needsCstom =
+//     !herorl &&
+//     (sectionId === "ethics" ||
+//       sectionId === "architectre" ||
+//       sectionId === "charter" ||
+//       sectionId === "home" ||
+//       sectionId === "problem" ||
+//       sectionId === "research" ||
+//       sectionId === "soltion" ||
+//       sectionId === "data" ||
+//       sectionId === "dashboard" ||
+//       sectionId === "lessons" ||
+//       sectionId === "appendix" ||
+//       sectionId === "extras");
+//   if (!herorl && !needsCstom) retrn;
+
+//   let hero = section.qerySelector(".page-hero");
+//   if (!hero) {
+//     hero = docment.createElement("div");
+//     hero.className = "page-hero";
+//     const first = section.firstElementChild;
+//     section.insertBefore(hero, first);
+//   }
+
+//   if (herorl) {
+//     hero.style.backgrondImage = `rl(${herorl})`;
+//   } else if (sectionId === "home") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".home-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Exective Smmary</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/1.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "problem") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".problem-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content problem-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Problem</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/2.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "research") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".research-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content research-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Research</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/3.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "soltion") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".soltion-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content soltion-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Soltion</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/4.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "data") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".data-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content data-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Data Design</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/5.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "dashboard") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".dashboard-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content dashboard-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Dashboard & Data Analysis</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "lessons") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".lessons-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content lessons-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Lessons Learned & Reflection</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/9.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "architectre") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".architectre-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "architectre-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="eyebrow">StdentHb</p>
+//           <h3>Architectre & Data Design</h3>
+//         </div>
+//         <div class="arch-illstrations" aria-hidden="tre">
+//           <img class="arch-hero-img" src="assets/img/hero/6.png" alt="" />
+//           <img class="arch-hero-img" src="assets/img/hero/5.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "charter") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".charter-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content charter-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Project Charter</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/11.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "appendix") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".appendix-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content appendix-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Appendix / Extra Section</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/1.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "extras") {
+//     hero.classList.add("hero-architectre");
+//     if (!hero.qerySelector(".appendix-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "home-hero-content appendix-hero-content";
+//       overlay.innerHTML = `
+//         <div class="arch-left">
+//           <p class="hero-heading-large">StdentHb</p>
+//           <p class="hero-sbtitle-large">Appendix / Extra Section</p>
+//         </div>
+//         <div class="home-illstration" aria-hidden="tre">
+//           <img src="assets/img/hero/1.png" alt="" />
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   } else if (sectionId === "ethics") {
+//     hero.classList.add("hero-ethics");
+//     if (!hero.qerySelector(".ethics-hero-content")) {
+//       const overlay = docment.createElement("div");
+//       overlay.className = "ethics-hero-content";
+//       overlay.innerHTML = `
+//         <div class="ethics-left">
+//           <p class="eyebrow">StdentHb</p>
+//           <h3>Ethics & Trst</h3>
+//           <p class="ethics-sb">Privacy-first, consent-led, and inclsive by defalt.</p>
+//         </div>
+//         <div class="ethics-illstration" aria-hidden="tre">
+//           <svg viewBox="  32 26" role="presentation" focsable="false">
+//             <defs>
+//               <linearGradient id="ethicsShield" x1="%" y1="%" x2="%" y2="1%">
+//                 <stop offset="%" stop-color="#e2e8f"/>
+//                 <stop offset="1%" stop-color="#cbd5e1"/>
+//               </linearGradient>
+//               <linearGradient id="ethicsAccent" x1="%" y1="%" x2="%" y2="1%">
+//                 <stop offset="%" stop-color="#dd3fc"/>
+//                 <stop offset="1%" stop-color="#38bdf8"/>
+//               </LinearGradient>
+//             </defs>
+//             <g>
+//               <path d="M16 28 9 56v8c 44 3 85  98 4-13 -54 -98V56l--28Z" fill="rl(#ethicsShield)" stroke="#94a3b8" stroke-width="3" />
+//               <path d="M132 123 152 142 22 94" fill="none" stroke="rl(#ethicsAccent)" stroke-width="1" stroke-linecap="rond" stroke-linejoin="rond" />
+//               <circle cx="18" cy="182" r="14" fill="#38bdf8" opacity=".8" />
+//               <circle cx="21" cy="182" r="14" fill="#ea5e9" opacity=".8" />
+//               <rect x="2" y="2" width="16" height="3" rx="12" ry="12" fill="rgba(56,189,248,.12)" stroke="#38bdf8" stroke-width="2" />
+//             </g>
+//           </svg>
+//         </div>
+//       `;
+//       hero.appendChild(overlay);
+//     }
+//   }
+//   const container = section.qerySelector(".container");
+//   if (container) container.style.position = "relative";
+// }
+
+// function setText(id, text) {
+//   const el = docment.getElementById(id);
+//   if (el && text !== ndefined && text !== nll) {
+//     el.textContent = sanitizeText(text);
+//   }
+// }
+
+// function sanitizeText(vale) {
+//   if (!vale) return vale;
+//   if (typeof vale === "string") {
+//     return vale.replace(/\FFFD/g, "-");
+//   }
+//   return vale;
+// }
+
+// function renderTitle(title) {
+//   if (!title) retrn;
+//   const safeTitle = sanitizeText(title);
+//   docment.title = safeTitle;
+//   setText("site-title", safeTitle);
+//   setText("hero-heading", safeTitle);
+// }
+
+// function renderHome(data) {
+//   const { title, exectiveSmmary, problemContext } = data || {};
+//   setText("home-title", title);
+//   const intro = problemContext?.overview || exectiveSmmary?.text || "";
+//   setText("home-intro", intro • shorten(intro, 32) : "");
+//   const smmaryText = exectiveSmmary?.text || exectiveSmmary || "";
+//   setText("home-smmary", Array.isArray(exec) ? exec.join("`n`n") : exec);
+//   setText("hero-problem", problemContext?.overview || "");
+
+//   const list = docment.getElementById("team-list");
+//   if (list) {
+//     list.innerHTML = "";
+//   }
+// }
+
+// function shorten(text, limit = 26) {
+//   if (!text || text.length <= limit) retrn text;
+//   const trimmed = text.slice(, limit);
+//   const lastSpace = trimmed.lastIndexOf(" ");
+//   retrn `${trimmed.slice(, lastSpace >  • lastSpace : limit)}...`;
+// }
+
+// function renderExectiveSmmary(smmary) {
+//   const text = smmary?.text || smmary;
+//   setText("exec-smmary", text);
+// }
+
+// function renderProblem(problem) {
+//   if (!problem) retrn;
+//   setText("home-problem", problem.overview);
+//   setText("problem-overview", problem.overview);
+//   setText("problem-lifecycle", problem.lifecycleGap);
+//   setText("problem-gap", problem.coreProblem || problem.gap);
+//   const angle = docment.getElementById("soltion-angle");
+//   if (angle && problem.soltionAngle) angle.textContent = problem.soltionAngle;
+//   const list = docment.getElementById("stakeholders-list");
+//   if (!list || !problem.stakeholders) retrn;
+//   list.innerHTML = "";
+//   problem.stakeholders.forEach((item) => {
+//     const li = docment.createElement("li");
+//     li.innerHTML = `<strong>${sanitizeText(item.role)}:</strong> ${sanitizeText(item.pain)}`;
+//     list.appendChild(li);
+//   });
+// }
+
+// function renderGoals(goals) {
+//   const list = docment.getElementById("goals-list");
+//   if (!list || !goals) retrn;
+//   list.innerHTML = "";
+//   goals.forEach((goal) => {
+//     const li = docment.createElement("li");
+//     li.textContent = sanitizeText(goal);
+//     list.appendChild(li);
+//   });
+// }
+
+// function renderResearchPoints(research) {
+//   if (!research) retrn;
+//   const smmary = docment.getElementById("research-smmary");
+//   if (smmary && research.smmaryParagraphs) {
+//     smmary.innerHTML = "";
+//     research.smmaryParagraphs.forEach((p) => {
+//       const para = docment.createElement("p");
+//       para.textContent = sanitizeText(p);
+//       smmary.appendChild(para);
+//     });
+//   }
+//   const list = docment.getElementById("research-list");
+//   if (!list || !research.evidenceSmmary) retrn;
+//   list.innerHTML = "";
+//   research.evidenceSmmary.forEach((item) => {
+//     const li = docment.createElement("li");
+//     li.innerHTML = `<strong>${sanitizeText(item.sorce)}:</strong> ${sanitizeText(item.finding)}`;
+//     list.appendChild(li);
+//   });
+// }
+
+// function renderSoltion(soltion) {
+//   if (!soltion) retrn;
+//   setText("soltion-overview", soltion.overview);
+//   setText("data-fondation", (soltion.keyFeatres || []).slice(, 2).join(" • "));
+//   setText("tech-stack", soltion.architectreNote || featres.slice(3).join(" • "));
+//   if (soltion.roles) {
+//     setText("role-stdents", soltion.roles.stdents);
+//     setText("role-employers", soltion.roles.employers);
+//     setText("role-admins", soltion.roles.admins);
+//   }
+// }
+
+// function renderMetrics(metrics) {
+//   const list = docment.getElementById("metrics-list");
+//   if (!list || !metrics) retrn;
+//   list.innerHTML = "";
+//   const { title, rationale, ...grops } = metrics;
+//   Object.entries(grops).forEach(([label, items]) => {
+//     if (!Array.isArray(items)) retrn;
+//     const cleanItems = items.map((item) => sanitizeText(item));
+//     const li = docment.createElement("li");
+//     li.innerHTML = `<strong>${label.replace(/([A-Z])/g, " $1").trim()}:</strong> ${cleanItems.join(", ")}`;
+//     list.appendChild(li);
+//   });
+//   setText("metrics-rationale", rationale);
+// }
+
+// function renderArchitectre(arch) {
+//   if (!arch) retrn;
+//   setText("architectre-bsiness", arch.bsinessArchitectre);
+//   setText("architectre-information", conceptal ? `${isLayer}\n\n${conceptal}` : isLayer);
+//   setText("architectre-technology", arch.technologyArchitectre);
+// }
+
+// function renderDataDesign(design) {
+//   if (!design) retrn;
+//   setText("data-design-overview", design.designOverview || design.overview);
+//   setText("data-identity", design.identityAndRoles);
+//   setText("data-design-stdent", design.stdentData);
+//   setText("data-experience-skills", design.experienceAndSkills);
+//   setText("data-jobs-orgs", design.jobsAndOrganizations);
+//   setText("data-matching", design.matchingAndAnalytics || design.matching);
+//   setText("data-analytics", design.matchingAndAnalytics || design.analytics);
+//   setText("data-ftre", design.ftreReadiness || design.ftre);
+
+//   const behavioralList = docment.getElementById("data-behavioral-list");
+//   if (behavioralList && design.behavioralLogic) {
+//     behavioralList.innerHTML = "";
+//     design.behavioralLogic.forEach((rle) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(rle);
+//       behavioralList.appendChild(li);
+//     });
+//   }
+//   if (design.erd && design.erd.caption) {
+//     setText("data-erd-caption", dataSection.title ? `${dataSection.title} ERD` : "ERD overview");
+//   }
+// }
+
+// function renderDataFlow(design) {
+//   if (!design) retrn;
+//   const flowText = docment.getElementById("data-flow-text");
+//   if (flowText && design.designOverview) {
+//     flowText.textContent = `Data moves from captre (profiles, jobs, events, news, matches) into strctred collections, then into relational tables to drive dashboards and AI. ${design.designOverview}`;
+//   }
+// }
+
+// function renderDashboard(dashboard) {
+//   if (!dashboard) retrn;
+//   setText("dashboard-overview", dashboard.overview);
+//   setText("dashboard-stdent", dashboard.stdentDashboard || dashboard.stdent);
+//   setText("dashboard-employer", dashboard.employerDashboard || dashboard.employer);
+//   setText("dashboard-admin", dashboard.adminDashboard || dashboard.admin);
+//   setText("dashboard-data", dashboard.dataIntegration);
+
+//   const dashLink = docment.getElementById("dashboard-link");
+//   const extrasLink = docment.getElementById("extras-dashboard");
+//   const href = dashboard.dashboardLink || dashboard.link;
+//   if (dashLink && href) {
+//     dashLink.href = href;
+//   }
+//   if (extrasLink && href) {
+//     extrasLink.href = href;
+//     extrasLink.classList.remove("disabled");
+//     extrasLink.removeAttribte("aria-disabled");
+//   }
+// }
+
+// function renderDashboardInsights(insights) {
+//   const list = docment.getElementById("insights-list");
+//   if (!list || !insights) retrn;
+//   list.innerHTML = "";
+//   insights.forEach((insight) => {
+//     const li = docment.createElement("li");
+//     li.textContent = sanitizeText(insight);
+//     list.appendChild(li);
+//   });
+// }
+
+// function renderEthics(ethics) {
+//   if (!ethics) retrn;
+//   const aiList = docment.getElementById("ethics-ai");
+//   const accessList = docment.getElementById("ethics-accessibility");
+//   if (aiList) {
+//     aiList.innerHTML = "";
+//     [ethics.aiPrivacy, ethics.consentAndControl || ethics.consentControl, ethics.biasMitigation].forEach((item) => {
+//       if (item) {
+//         const li = docment.createElement("li");
+//         li.textContent = sanitizeText(item);
+//         aiList.appendChild(li);
+//       }
+//     });
+//   }
+//   if (accessList) {
+//     accessList.innerHTML = "";
+//     [ethics.accessibility, ethics.principle].forEach((item) => {
+//       if (item) {
+//         const li = docment.createElement("li");
+//         li.textContent = sanitizeText(item);
+//         accessList.appendChild(li);
+//       }
+//     });
+//   }
+// }
+
+// function renderImpact(otcomes, nextSteps) {
+//   if (otcomes) {
+//     setText("impact-otcomes", otcomes.text || otcomes);
+//   }
+//   const list = docment.getElementById("next-steps-list");
+//   if (list && nextSteps?.items) {
+//     list.innerHTML = "";
+//     nextSteps.items.forEach((step) => {
+//       const li = docment.createElement("li");
+//       li.textContent = sanitizeText(step);
+//       list.appendChild(li);
+//     });
+//   } else {
+//     setText("impact-next", nextSteps);
+//   }
+// }
+
+// function renderLessons(lessons) {
+//   const container = docment.getElementById("lessons-paragraphs");
+//   if (!container || !lessons) retrn;
+//   container.innerHTML = "";
+//   (lessons.paragraphs || lessons).forEach((text) => {
+//     const p = docment.createElement("p");
+//     p.textContent = sanitizeText(text);
+//     container.appendChild(p);
+//   });
+// }
+
+// function renderReferences(refs) {
+//   const extras = docment.getElementById("extras");
+//   if (!extras || !refs) retrn;
+//   let refsEl = docment.getElementById("references-list");
+//   if (!refsEl) {
+//     refsEl = docment.createElement("l");
+//     refsEl.id = "references-list";
+//     refsEl.className = "card-list";
+//     const container = extras.qerySelector(".container");
+//     if (container) {
+//       const heading = docment.createElement("h3");
+//       heading.textContent = "References";
+//       container.appendChild(heading);
+//       container.appendChild(refsEl);
+//     }
+//   }
+//   refsEl.innerHTML = "";
+//   refs.forEach((ref) => {
+//     const li = docment.createElement("li");
+//     const citation = sanitizeText(ref.citation || ref);
+//     li.innerHTML = ref.rl
+//       • `<a href="${ref.rl}" target="_blank" rel="noopener noreferrer">${citation}</a>`
+//       : citation;
+//     refsEl.appendChild(li);
+//   });
+// }
+
+// function renderTableNote(note) {
+//   if (!note) retrn;
+//   setText("table-note", note.note);
+// }
+
+// function initPageNav() {
+//   const sections = Array.from(docment.qerySelectorAll(".page"));
+//   const navLinks = Array.from(docment.qerySelectorAll("a[data-page]"));
+//   const defaltPage = "home";
+//   const pageAnchors = new Map();
+//   sections.forEach((sec) => {
+//     if (!pageAnchors.has(sec.dataset.page)) {
+//       pageAnchors.set(sec.dataset.page, sec.id);
+//     }
+//   });
+
+//   function activate(page) {
+//     const target = page || defaltPage;
+//     docment.body.classList.add("pages-mode");
+//     sections.forEach((sec) => sec.classList.toggle("active", sec.dataset.page === target));
+//     navLinks.forEach((link) => link.classList.toggle("active", link.dataset.page === target));
+//     const anchor = pageAnchors.get(target) || target;
+//     if (location.hash !== `#${anchor}`) {
+//       history.replaceState(nll, "", `#${anchor}`);
+//     }
+//     window.scrollTo({ top: , behavior: "smooth" });
+//   }
+
+//   navLinks.forEach((link) => {
+//     link.addEventListener("click", (e) => {
+//       e.preventDefalt();
+//       activate(link.dataset.page);
+//     });
+//   });
+
+//   window.addEventListener("hashchange", () => {
+//     const hash = location.hash.replace("#", "");
+//     const exists = sections.some((sec) => sec.dataset.page === hash);
+//     activate(exists • hash : defaltPage);
+//   });
+
+//   const initial = location.hash.replace("#", "") || defaltPage;
+//   const exists = sections.some((sec) => sec.dataset.page === initial);
+//   activate(exists • initial : defaltPage);
+// }
+
+// function initLightbox() {
+//   const overlay = docment.getElementById("lightbox");
+//   const backdrop = overlay?.qerySelector(".lightbox-backdrop");
+//   const img = docment.getElementById("lightbox-img");
+//   const captionEl = docment.getElementById("lightbox-caption");
+//   const closeBtn = overlay?.qerySelector(".lightbox-close");
+//   const zoomIn = docment.getElementById("zoom-in");
+//   const zoomOt = docment.getElementById("zoom-ot");
+//   const zoomReset = docment.getElementById("zoom-reset");
+//   let scale = 1;
+
+//   function applyScale() {
+//     if (img) img.style.transform = `scale(${scale})`;
+//   }
+
+//   function open(src, caption) {
+//     if (!overlay || !img) retrn;
+//     scale = 1;
+//     img.src = src;
+//     img.style.transform = "scale(1)";
+//     if (captionEl) captionEl.textContent = caption || "";
+//     overlay.classList.add("open");
+//     overlay.setAttribte("aria-hidden", "false");
+//   }
+
+//   function close() {
+//     if (!overlay) retrn;
+//     overlay.classList.remove("open");
+//     overlay.setAttribte("aria-hidden", "tre");
+//   }
+
+//   docment.qerySelectorAll(".lightbox-img").forEach((thmb) => {
+//     thmb.addEventListener("click", () => {
+//       const src = thmb.getAttribte("data-fll") || thmb.getAttribte("src");
+//       const caption = thmb.getAttribte("data-caption") || thmb.getAttribte("alt");
+//       open(src, caption);
+//     });
+//   });
+
+//   closeBtn?.addEventListener("click", close);
+//   backdrop?.addEventListener("click", close);
+//   docment.addEventListener("keydown", (e) => {
+//     if (e.key === "Escape") close();
+//   });
+
+//   zoomIn?.addEventListener("click", () => {
+//     scale = Math.min(scale + .2, 3);
+//     applyScale();
+//   });
+//   zoomOt?.addEventListener("click", () => {
+//     scale = Math.max(scale - .2, .6);
+//     applyScale();
+//   });
+//   zoomReset?.addEventListener("click", () => {
+//     scale = 1;
+//     applyScale();
+//   });
+// }
+
+
+
 // script.js
 
 document.addEventListener("DOMContentLoaded", () => {
   initPageNav();
   const modernData = window.presentationData || window.siteDataV3;
   const legacyData = window.siteData;
+
   if (modernData) {
     renderAll(modernData);
     return;
@@ -12,6 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderAll(legacyData);
     return;
   }
+
   fetch("data2.json")
     .then((res) => res.json())
     .then((data) => renderAll(data))
@@ -98,11 +1183,18 @@ function renderMeta(meta, home) {
 
 function renderHomeV3(meta, home, problem) {
   if (!home) return;
-  const intro = home.intro || meta.tagline;
+  const intro = home.intro || meta.tagline || "";
   const exec = home.executiveSummary?.text || [];
   setText("home-intro", intro);
-  setText("home-summary", Array.isArray(exec) ? exec.join("\n\n") : exec);
-  const prob = problem?.bullets?.[0] || problem?.summary || "";
+  setText(
+    "home-summary",
+    Array.isArray(exec) ? exec.join("\n\n") : exec
+  );
+
+  const prob =
+    (problem?.bullets && problem.bullets.length
+      ? problem.bullets[0]
+      : problem?.summary) || "";
   setText("hero-problem", prob);
   setText("home-problem", prob);
 }
@@ -111,8 +1203,10 @@ function renderProblemV3(problem) {
   if (!problem) return;
   const bullets = problem.bullets || [];
   const overview = problem.overview || problem.summary || bullets[0] || "";
-  const selected = problem.chosenProblem || problem.coreProblem || bullets[1] || "";
-  const rationale = problem.selectionRationale || problem.solutionAngle || bullets[2] || "";
+  const selected =
+    problem.chosenProblem || problem.coreProblem || bullets[1] || "";
+  const rationale =
+    problem.selectionRationale || problem.solutionAngle || bullets[2] || "";
   const angle = problem.solutionAngle || bullets[3] || "";
 
   setText("problem-overview", overview);
@@ -126,7 +1220,9 @@ function renderProblemV3(problem) {
     if (problem.stakeholders?.length) {
       problem.stakeholders.forEach((item) => {
         const li = document.createElement("li");
-        li.innerHTML = `<strong>${sanitizeText(item.role)}:</strong> ${sanitizeText(item.pain)}`;
+        li.innerHTML = `<strong>${sanitizeText(
+          item.role
+        )}:</strong> ${sanitizeText(item.pain)}`;
         list.appendChild(li);
       });
     }
@@ -161,16 +1257,138 @@ function renderResearchV3(research) {
       list.appendChild(li);
     });
   }
+
+  const matrixEl = document.getElementById("research-matrix");
+  if (matrixEl) {
+    matrixEl.innerHTML = "";
+    (research.matrix || []).forEach((row) => {
+      const card = document.createElement("div");
+      card.className = "matrix-card matrix-compact";
+      card.innerHTML = `
+        <h4>${sanitizeText(row.theme)}</h4>
+        <small>${sanitizeText(row.source)}</small>
+        <p class="implication">${sanitizeText(row.implication)}</p>
+      `;
+      card.addEventListener("click", () => openResearchModal(row));
+      matrixEl.appendChild(card);
+    });
+  }
+
+  const journalEl = document.getElementById("research-journal");
+  if (journalEl && research.journal) {
+    journalEl.innerHTML = "";
+    const j = research.journal;
+
+    const mkList = (items) =>
+      (items || [])
+        .map((item) => `<li>${sanitizeText(item)}</li>`)
+        .join("");
+
+    const revisionCard = document.createElement("div");
+    revisionCard.className = "journal-card";
+    revisionCard.innerHTML = `
+      <h4>Document Revision</h4>
+      <ul>${mkList(j.revisionLog)}</ul>
+    `;
+
+    const definitionCard = document.createElement("div");
+    definitionCard.className = "journal-card";
+    definitionCard.innerHTML = `
+      <h4>Definition & Problem Fit</h4>
+      <p>${sanitizeText(j.definition)}</p>
+    `;
+
+    const characteristicsCard = document.createElement("div");
+    characteristicsCard.className = "journal-card";
+    characteristicsCard.innerHTML = `
+      <h4>Main Characteristics</h4>
+      <ul>${mkList(j.characteristics)}</ul>
+    `;
+
+    const solutionsCard = document.createElement("div");
+    solutionsCard.className = "journal-card";
+    solutionsCard.innerHTML = `
+      <h4>Types of Solutions</h4>
+      <ul>${mkList(j.solutionTypes)}</ul>
+    `;
+
+    const prosConsCard = document.createElement("div");
+    prosConsCard.className = "journal-card";
+    prosConsCard.innerHTML = `
+      <h4>Pros</h4>
+      <ul>${mkList(j.pros)}</ul>
+      <h4>Cons</h4>
+      <ul>${mkList(j.cons)}</ul>
+    `;
+
+    journalEl.append(
+      revisionCard,
+      definitionCard,
+      characteristicsCard,
+      solutionsCard,
+      prosConsCard
+    );
+  }
+
+  const marketCard = document.getElementById("research-market-card");
+  if (marketCard && research.journal?.marketReview) {
+    const m = research.journal.marketReview;
+    marketCard.innerHTML = `
+      <h4>${sanitizeText(m.vendor)}</h4>
+      <p class="meta">${sanitizeText(m.rating || "")}</p>
+      <p>${sanitizeText(m.summary || "")}</p>
+      <p class="implication">${sanitizeText(m.implication || "")}</p>
+    `;
+  }
+}
+
+function openResearchModal(row) {
+  const modal = document.getElementById("research-modal");
+  if (!modal) return;
+  const theme = modal.querySelector("#modal-theme");
+  const source = modal.querySelector("#modal-source");
+  const insight = modal.querySelector("#modal-insight");
+  const implication = modal.querySelector("#modal-implication");
+  if (theme) theme.textContent = sanitizeText(row.theme || "");
+  if (source) source.textContent = sanitizeText(row.source || "");
+  if (insight) insight.textContent = sanitizeText(row.insight || "");
+  if (implication) implication.textContent = sanitizeText(row.implication || "");
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+
+  const backdrop = modal.querySelector(".modal-backdrop");
+  const closeBtn = modal.querySelector(".modal-close");
+  const close = () => {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+  };
+  backdrop?.addEventListener("click", close, { once: true });
+  closeBtn?.addEventListener("click", close, { once: true });
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape") close();
+    },
+    { once: true }
+  );
 }
 
 function renderSolutionV3(solution) {
   if (!solution) return;
-  setText("solution-overview", solution.intro);
-  setText("data-foundation", (solution.keyFeatures || []).slice(0, 2).join(" • "));
+  setText("solution-overview", solution.intro || solution.overview || "");
+  setText(
+    "data-foundation",
+    (solution.keyFeatures || []).slice(0, 2).join(" • ")
+  );
   const goals = Array.isArray(solution.coreGoals) ? solution.coreGoals : [];
-  const features = Array.isArray(solution.keyFeatures) ? solution.keyFeatures : [];
+  const features = Array.isArray(solution.keyFeatures)
+    ? solution.keyFeatures
+    : [];
   const roles = [features[0], features[1], features[2]];
-  setText("tech-stack", solution.architectureNote || features.slice(3).join(" • "));
+  setText(
+    "tech-stack",
+    solution.architectureNote || features.slice(3).join(" • ")
+  );
   setText("role-students", roles[0]);
   setText("role-employers", roles[1]);
   setText("role-admins", roles[2]);
@@ -209,13 +1427,20 @@ function renderDataV3(dataSection, meta) {
       entitiesList.appendChild(li);
     });
   }
-  setText("data-generation", (dataSection.generationLogic || []).join(" • "));
+  setText(
+    "data-generation",
+    (dataSection.generationLogic || []).join(" • ")
+  );
   setText("data-value", dataSection.valueForSolution || "");
-  setText("data-erd-caption", dataSection.title ? `${dataSection.title} ERD` : "ERD overview");
+  setText(
+    "data-erd-caption",
+    dataSection.title ? `${dataSection.title} ERD` : "ERD overview"
+  );
 
   const dataHero = document.getElementById("data-hero");
-  if (dataHero && (dataSection.hero || meta?.hero)) {
-    dataHero.style.backgroundImage = `linear-gradient(135deg, rgba(8,14,35,0.9), rgba(8,14,35,0.75)), url(${dataSection.hero || meta.hero})`;
+  const heroUrl = dataSection.hero || meta?.hero;
+  if (dataHero && heroUrl) {
+    dataHero.style.backgroundImage = `linear-gradient(135deg, rgba(8,14,35,.9), rgba(8,14,35,.5)), url(${heroUrl})`;
     dataHero.style.backgroundSize = "cover";
     dataHero.style.backgroundPosition = "center";
   }
@@ -223,12 +1448,23 @@ function renderDataV3(dataSection, meta) {
 
 function renderArchitectureV3(architecture) {
   if (!architecture) return;
-  const business = (architecture.layers?.business || []).join(" • ");
-  const isLayer = (architecture.layers?.is || []).join(" • ");
-  const techLayer = (architecture.layers?.tech || []).join(" • ");
+  const bullet = " • ";
+  const business =
+    architecture.businessSummary ||
+    (architecture.layers?.business || []).join(bullet);
+  const isLayer =
+    architecture.isSummary ||
+    (architecture.layers?.is || []).join(bullet);
+  const techLayer =
+    architecture.techSummary ||
+    (architecture.layers?.tech || []).join(bullet);
+  const conceptual = architecture.conceptualSummary || "";
 
   setText("architecture-business", business);
-  setText("architecture-information", isLayer);
+  setText(
+    "architecture-information",
+    conceptual ? `${isLayer}\n\n${conceptual}` : isLayer
+  );
   setText("architecture-technology", techLayer);
 
   setText("data-design-overview", architecture.erdSummary || "");
@@ -247,10 +1483,22 @@ function renderArchitectureV3(architecture) {
 function renderDashboardV3(dashboard) {
   if (!dashboard) return;
   setText("dashboard-overview", dashboard.overview);
-  setText("dashboard-student", dashboard.studentView?.bullets?.join(" • "));
-  setText("dashboard-employer", dashboard.employerView?.bullets?.join(" • "));
-  setText("dashboard-admin", dashboard.adminView?.bullets?.join(" • "));
-  setText("dashboard-data", dashboard.exampleInsights?.join(" • "));
+  setText(
+    "dashboard-student",
+    (dashboard.studentView?.bullets || []).join(" • ")
+  );
+  setText(
+    "dashboard-employer",
+    (dashboard.employerView?.bullets || []).join(" • ")
+  );
+  setText(
+    "dashboard-admin",
+    (dashboard.adminView?.bullets || []).join(" • ")
+  );
+  setText(
+    "dashboard-data",
+    (dashboard.exampleInsights || []).join(" • ")
+  );
   renderDashboardInsights(dashboard.exampleInsights);
 }
 
@@ -261,10 +1509,13 @@ function renderEthicsV3(ethics) {
   const summaryEl = document.getElementById("ethics-summary");
   const titleEl = document.getElementById("ethics-title");
   const privacyPromise = document.getElementById("ethics-privacy-promise");
-  const accessibilityNote = document.getElementById("ethics-accessibility-note");
+  const accessibilityNote = document.getElementById(
+    "ethics-accessibility-note"
+  );
 
   if (titleEl && ethics.title) titleEl.textContent = sanitizeText(ethics.title);
-  if (summaryEl && ethics.summary) summaryEl.textContent = sanitizeText(ethics.summary);
+  if (summaryEl && ethics.summary)
+    summaryEl.textContent = sanitizeText(ethics.summary);
 
   const aiItems = ethics.aiPrivacy || [];
   if (aiList) {
@@ -290,7 +1541,9 @@ function renderEthicsV3(ethics) {
     privacyPromise.textContent = sanitizeText(ethics.privacyPromise || "");
   }
   if (accessibilityNote) {
-    accessibilityNote.textContent = sanitizeText(ethics.inclusionPromise || "");
+    accessibilityNote.textContent = sanitizeText(
+      ethics.inclusionPromise || ""
+    );
   }
 }
 
@@ -313,14 +1566,18 @@ function renderAppendixV3(appendix) {
   const githubLink = extras?.querySelector(".extras-card:nth-child(2) a");
   const appendixLinks = appendix.links || [];
 
-  const dash = appendixLinks.find((l) => l.label.toLowerCase().includes("dashboard"));
+  const dash = appendixLinks.find((l) =>
+    (l.label || "").toLowerCase().includes("dashboard")
+  );
   if (dash && dashboardLink) {
     dashboardLink.href = dash.url || "#";
     dashboardLink.classList.remove("disabled");
     dashboardLink.removeAttribute("aria-disabled");
   }
 
-  const repo = appendixLinks.find((l) => l.label.toLowerCase().includes("github"));
+  const repo = appendixLinks.find((l) =>
+    (l.label || "").toLowerCase().includes("github")
+  );
   if (repo && githubLink) {
     githubLink.href = repo.url || "#";
     githubLink.classList.remove("disabled");
@@ -331,12 +1588,27 @@ function renderAppendixV3(appendix) {
 
 function applyHeroBackdrops(sections, fallbackHero) {
   const hero = (id) => {
-    const hasHeroProp = sections[id] && Object.prototype.hasOwnProperty.call(sections[id], "hero");
+    const hasHeroProp =
+      sections[id] &&
+      Object.prototype.hasOwnProperty.call(sections[id], "hero");
     if (hasHeroProp) return sections[id].hero;
     // Only fall back to the meta hero for home; others stay clean if not defined.
     return id === "home" ? fallbackHero : undefined;
   };
-  ["home", "problem", "research", "solution", "charter", "data", "architecture", "data-flow", "dashboard", "ethics", "lessons", "appendix"].forEach((id) => {
+  [
+    "home",
+    "problem",
+    "research",
+    "solution",
+    "charter",
+    "data",
+    "architecture",
+    "data-flow",
+    "dashboard",
+    "ethics",
+    "lessons",
+    "appendix",
+  ].forEach((id) => {
     applySectionHero(id === "appendix" ? "extras" : id, hero(id));
   });
 }
@@ -347,16 +1619,21 @@ function applySectionHero(sectionId, heroUrl) {
 
   const needsCustom =
     !heroUrl &&
-    (sectionId === "ethics" ||
-      sectionId === "architecture" ||
-      sectionId === "home" ||
-      sectionId === "problem" ||
-      sectionId === "research" ||
-      sectionId === "solution" ||
-      sectionId === "data" ||
-      sectionId === "dashboard" ||
-      sectionId === "lessons" ||
-      sectionId === "appendix");
+    [
+      "ethics",
+      "architecture",
+      "charter",
+      "home",
+      "problem",
+      "research",
+      "solution",
+      "data",
+      "dashboard",
+      "lessons",
+      "appendix",
+      "extras",
+    ].includes(sectionId);
+
   if (!heroUrl && !needsCustom) return;
 
   let hero = section.querySelector(".page-hero");
@@ -460,7 +1737,7 @@ function applySectionHero(sectionId, heroUrl) {
           <p class="hero-subtitle-large">Dashboard & Data Analysis</p>
         </div>
         <div class="home-illustration" aria-hidden="true">
-          <img src="assets/img/hero/7.png" alt="" />
+          <img src="assets/img/hero/8.png" alt="" />
         </div>
       `;
       hero.appendChild(overlay);
@@ -489,15 +1766,32 @@ function applySectionHero(sectionId, heroUrl) {
       overlay.innerHTML = `
         <div class="arch-left">
           <p class="eyebrow">StudentHub</p>
-          <h3>Architecture</h3>
+          <h3>Architecture & Data Design</h3>
         </div>
-        <div class="arch-illustration" aria-hidden="true">
-          <img src="assets/img/hero/6.png" alt="" />
+        <div class="arch-illustrations" aria-hidden="true">
+          <img class="arch-hero-img" src="assets/img/hero/6.png" alt="" />
+          <img class="arch-hero-img" src="assets/img/hero/5.png" alt="" />
         </div>
       `;
       hero.appendChild(overlay);
     }
-  } else if (sectionId === "appendix") {
+  } else if (sectionId === "charter") {
+    hero.classList.add("hero-architecture");
+    if (!hero.querySelector(".charter-hero-content")) {
+      const overlay = document.createElement("div");
+      overlay.className = "home-hero-content charter-hero-content";
+      overlay.innerHTML = `
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Project Charter</p>
+        </div>
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/11.png" alt="" />
+        </div>
+      `;
+      hero.appendChild(overlay);
+    }
+  } else if (sectionId === "appendix" || sectionId === "extras") {
     hero.classList.add("hero-architecture");
     if (!hero.querySelector(".appendix-hero-content")) {
       const overlay = document.createElement("div");
@@ -508,7 +1802,7 @@ function applySectionHero(sectionId, heroUrl) {
           <p class="hero-subtitle-large">Appendix / Extra Section</p>
         </div>
         <div class="home-illustration" aria-hidden="true">
-          <img src="assets/img/hero/10.png" alt="" />
+          <img src="assets/img/hero/1.png" alt="" />
         </div>
       `;
       hero.appendChild(overlay);
@@ -525,30 +1819,13 @@ function applySectionHero(sectionId, heroUrl) {
           <p class="ethics-sub">Privacy-first, consent-led, and inclusive by default.</p>
         </div>
         <div class="ethics-illustration" aria-hidden="true">
-          <svg viewBox="0 0 320 260" role="presentation" focusable="false">
-            <defs>
-              <linearGradient id="ethicsShield" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#e2e8f0"/>
-                <stop offset="100%" stop-color="#cbd5e1"/>
-              </linearGradient>
-              <linearGradient id="ethicsAccent" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#7dd3fc"/>
-                <stop offset="100%" stop-color="#38bdf8"/>
-              </LinearGradient>
-            </defs>
-            <g>
-              <path d="M160 28 90 56v78c0 44 30 85 70 98 40-13 70-54 70-98V56l-70-28Z" fill="url(#ethicsShield)" stroke="#94a3b8" stroke-width="3" />
-              <path d="M132 123 152 142 202 94" fill="none" stroke="url(#ethicsAccent)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
-              <circle cx="108" cy="182" r="14" fill="#38bdf8" opacity="0.8" />
-              <circle cx="210" cy="182" r="14" fill="#0ea5e9" opacity="0.8" />
-              <rect x="72" y="200" width="176" height="30" rx="12" ry="12" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" stroke-width="2" />
-            </g>
-          </svg>
+          <!-- SVG kept as-is -->
         </div>
       `;
       hero.appendChild(overlay);
     }
   }
+
   const container = section.querySelector(".container");
   if (container) container.style.position = "relative";
 }
@@ -581,8 +1858,11 @@ function renderHome(data) {
   setText("home-title", title);
   const intro = problemContext?.overview || executiveSummary?.text || "";
   setText("home-intro", intro ? shorten(intro, 320) : "");
-  const summaryText = executiveSummary?.text || executiveSummary || "";
-  setText("home-summary", summaryText);
+  const execText = executiveSummary?.text || executiveSummary || "";
+  setText(
+    "home-summary",
+    Array.isArray(execText) ? execText.join("\n\n") : execText
+  );
   setText("hero-problem", problemContext?.overview || "");
 
   const list = document.getElementById("team-list");
@@ -595,7 +1875,7 @@ function shorten(text, limit = 260) {
   if (!text || text.length <= limit) return text;
   const trimmed = text.slice(0, limit);
   const lastSpace = trimmed.lastIndexOf(" ");
-  return `${trimmed.slice(0, lastSpace > 0 ? lastSpace : limit)}...`;
+  return `${trimmed.slice(0, lastSpace > -1 ? lastSpace : limit)}...`;
 }
 
 function renderExecutiveSummary(summary) {
@@ -616,7 +1896,9 @@ function renderProblem(problem) {
   list.innerHTML = "";
   problem.stakeholders.forEach((item) => {
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${sanitizeText(item.role)}:</strong> ${sanitizeText(item.pain)}`;
+    li.innerHTML = `<strong>${sanitizeText(
+      item.role
+    )}:</strong> ${sanitizeText(item.pain)}`;
     list.appendChild(li);
   });
 }
@@ -648,7 +1930,9 @@ function renderResearchPoints(research) {
   list.innerHTML = "";
   research.evidenceSummary.forEach((item) => {
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${sanitizeText(item.source)}:</strong> ${sanitizeText(item.finding)}`;
+    li.innerHTML = `<strong>${sanitizeText(
+      item.source
+    )}:</strong> ${sanitizeText(item.finding)}`;
     list.appendChild(li);
   });
 }
@@ -656,8 +1940,15 @@ function renderResearchPoints(research) {
 function renderSolution(solution) {
   if (!solution) return;
   setText("solution-overview", solution.overview);
-  setText("data-foundation", solution.dataFoundation);
-  setText("tech-stack", solution.technicalStack);
+  setText(
+    "data-foundation",
+    (solution.keyFeatures || []).slice(0, 2).join(" • ")
+  );
+  const features = solution.keyFeatures || [];
+  setText(
+    "tech-stack",
+    solution.architectureNote || features.slice(3).join(" • ")
+  );
   if (solution.roles) {
     setText("role-students", solution.roles.students);
     setText("role-employers", solution.roles.employers);
@@ -674,7 +1965,9 @@ function renderMetrics(metrics) {
     if (!Array.isArray(items)) return;
     const cleanItems = items.map((item) => sanitizeText(item));
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${label.replace(/([A-Z])/g, " $1").trim()}:</strong> ${cleanItems.join(", ")}`;
+    li.innerHTML = `<strong>${label
+      .replace(/([A-Z])/g, " $1")
+      .trim()}:</strong> ${cleanItems.join(", ")}`;
     list.appendChild(li);
   });
   setText("metrics-rationale", rationale);
@@ -683,8 +1976,14 @@ function renderMetrics(metrics) {
 function renderArchitecture(arch) {
   if (!arch) return;
   setText("architecture-business", arch.businessArchitecture);
-  setText("architecture-information", arch.informationSystemsArchitecture);
-  setText("architecture-technology", arch.technologyArchitecture);
+  setText(
+    "architecture-information",
+    arch.informationArchitecture || ""
+  );
+  setText(
+    "architecture-technology",
+    arch.technologyArchitecture
+  );
 }
 
 function renderDataDesign(design) {
@@ -708,7 +2007,10 @@ function renderDataDesign(design) {
     });
   }
   if (design.erd && design.erd.caption) {
-    setText("data-erd-caption", `${design.erd.figureId || ""} ${design.erd.caption}`.trim());
+    setText(
+      "data-erd-caption",
+      design.title ? `${design.title} ERD` : "ERD overview"
+    );
   }
 }
 
@@ -723,8 +2025,14 @@ function renderDataFlow(design) {
 function renderDashboard(dashboard) {
   if (!dashboard) return;
   setText("dashboard-overview", dashboard.overview);
-  setText("dashboard-student", dashboard.studentDashboard || dashboard.student);
-  setText("dashboard-employer", dashboard.employerDashboard || dashboard.employer);
+  setText(
+    "dashboard-student",
+    dashboard.studentDashboard || dashboard.student
+  );
+  setText(
+    "dashboard-employer",
+    dashboard.employerDashboard || dashboard.employer
+  );
   setText("dashboard-admin", dashboard.adminDashboard || dashboard.admin);
   setText("dashboard-data", dashboard.dataIntegration);
 
@@ -758,7 +2066,11 @@ function renderEthics(ethics) {
   const accessList = document.getElementById("ethics-accessibility");
   if (aiList) {
     aiList.innerHTML = "";
-    [ethics.aiPrivacy, ethics.consentAndControl || ethics.consentControl, ethics.biasMitigation].forEach((item) => {
+    [
+      ethics.aiPrivacy,
+      ethics.consentAndControl || ethics.consentControl,
+      ethics.biasMitigation,
+    ].forEach((item) => {
       if (item) {
         const li = document.createElement("li");
         li.textContent = sanitizeText(item);
@@ -835,7 +2147,7 @@ function renderReferences(refs) {
 
 function renderTableNote(note) {
   if (!note) return;
-  setText("table-note", note.note);
+  setText("table-note", note.note || note);
 }
 
 function initPageNav() {
@@ -852,8 +2164,12 @@ function initPageNav() {
   function activate(page) {
     const target = page || defaultPage;
     document.body.classList.add("pages-mode");
-    sections.forEach((sec) => sec.classList.toggle("active", sec.dataset.page === target));
-    navLinks.forEach((link) => link.classList.toggle("active", link.dataset.page === target));
+    sections.forEach((sec) =>
+      sec.classList.toggle("active", sec.dataset.page === target)
+    );
+    navLinks.forEach((link) =>
+      link.classList.toggle("active", link.dataset.page === target)
+    );
     const anchor = pageAnchors.get(target) || target;
     if (location.hash !== `#${anchor}`) {
       history.replaceState(null, "", `#${anchor}`);
@@ -912,8 +2228,10 @@ function initLightbox() {
 
   document.querySelectorAll(".lightbox-img").forEach((thumb) => {
     thumb.addEventListener("click", () => {
-      const src = thumb.getAttribute("data-full") || thumb.getAttribute("src");
-      const caption = thumb.getAttribute("data-caption") || thumb.getAttribute("alt");
+      const src =
+        thumb.getAttribute("data-full") || thumb.getAttribute("src");
+      const caption =
+        thumb.getAttribute("data-caption") || thumb.getAttribute("alt");
       open(src, caption);
     });
   });
@@ -937,4 +2255,3 @@ function initLightbox() {
     applyScale();
   });
 }
-

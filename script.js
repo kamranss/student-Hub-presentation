@@ -201,13 +201,6 @@ function renderResearchV3(research) {
         .map((item) => `<li>${sanitizeText(item)}</li>`)
         .join("");
 
-    const revisionCard = document.createElement("div");
-    revisionCard.className = "journal-card";
-    revisionCard.innerHTML = `
-      <h4>Document Revision</h4>
-      <ul>${mkList(j.revisionLog)}</ul>
-    `;
-
     const definitionCard = document.createElement("div");
     definitionCard.className = "journal-card";
     definitionCard.innerHTML = `
@@ -239,7 +232,6 @@ function renderResearchV3(research) {
     `;
 
     journalEl.append(
-      revisionCard,
       definitionCard,
       characteristicsCard,
       solutionsCard,

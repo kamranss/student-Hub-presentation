@@ -841,6 +841,24 @@ body {
   margin-top: 0.35rem;
 }
 
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.data-erd-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.data-erd-figure {
+  margin-top: 1.2rem;
+}
+
 /* Highlight boxes */
 
 .highlight-box {

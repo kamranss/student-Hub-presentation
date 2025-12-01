@@ -22,7 +22,6 @@
       <a href="#research" data-page="research">Research</a>
       <a href="#solution" data-page="solution">Solution</a>
       <a href="#charter" data-page="charter">Project Charter</a>
-      <a href="#data" data-page="data">Data</a>
       <a href="#architecture" data-page="architecture">Architecture</a>
       <a href="#dashboard" data-page="dashboard">Dashboard</a>
       <a href="#ethics" data-page="ethics">Ethics</a>
@@ -369,92 +368,78 @@
     </div>
   </section>
 
-  <!-- Data & ERD -->
-  <section id="data" class="section alt page" data-page="data">
-    <div class="container">
-      <ul class="card-list" id="data-main-entities"></ul>
-
-      <figure class="figure">
-        <img
-          class="lightbox-img"
-          src="assets/img/StudentHUB_ERD.png"
-          data-full="assets/img/StudentHUB_ERD.png"
-          data-caption="ERD structure for StudentHub data model."
-          alt="ERD diagram"
-        />
-        <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- Architecture & Data Design -->
   <section id="architecture" class="section page" data-page="architecture">
     <div class="container">
       <h2>5. Architecture</h2>
-      <div class="two-col">
-        <div>
-          <h3>Enterprise Architecture (High-Level)</h3>
-          <p id="architecture-business">
-            Loading business architecture...
-          </p>
-          <p id="architecture-information">
-            Loading information architecture...
-          </p>
-          <p id="architecture-technology">
-            Loading technology architecture...
-          </p>
+      <div class="architecture-block">
+        <h3>Enterprise Architecture (High-Level)</h3>
+        <p id="architecture-business">
+          Loading business architecture...
+        </p>
+        <p id="architecture-information">
+          Loading information architecture...
+        </p>
+        <p id="architecture-technology">
+          Loading technology architecture...
+        </p>
+        <div class="figure-grid">
           <figure class="figure">
             <img
               class="lightbox-img"
               src="assets/img/Conceptual%20architecture.png"
               data-full="assets/img/Conceptual%20architecture.png"
-              data-caption="Enterprise architecture for StudentHub."
-              alt="Enterprise architecture diagram"
+              data-caption="Conceptual architecture for StudentHub."
+              alt="Conceptual architecture diagram"
             />
-            <figcaption>Figure A1. Enterprise architecture for StudentHub.</figcaption>
+            <figcaption>Figure A1. Conceptual architecture for StudentHub.</figcaption>
           </figure>
           <figure class="figure">
             <img
               class="lightbox-img"
               src="assets/img/Solution-Architecture.png"
               data-full="assets/img/Solution-Architecture.png"
-              data-caption="Solution architecture view for StudentHub."
+              data-caption="Solution architecture for StudentHub."
               alt="Solution architecture diagram"
             />
-            <figcaption>Figure A2. Solution architecture view for StudentHub.</figcaption>
+            <figcaption>Figure A2. Solution architecture for StudentHub.</figcaption>
           </figure>
         </div>
-        <div>
-          <h3>Data Structure & ERD</h3>
-          <p id="data-design-overview">
-            Loading data design overview...
-          </p>
-          <p id="data-identity">Loading identity and roles...</p>
-          <p id="data-design-student">
-            Loading student data design...
-          </p>
-          <p id="data-experience-skills">Loading experience and skills design...</p>
-          <ul class="card-list" id="data-behavioral-list"></ul>
-          <p id="data-jobs-orgs">Loading jobs and organizations design...</p>
-          <p id="data-matching">Loading matching design...</p>
-          <p id="data-analytics">Loading analytics design...</p>
-          <p id="data-future">Loading future design...</p>
-          <div class="highlight-box" id="data-generation">Loading generation logic...</div>
-          <div class="highlight-box" id="data-value">Loading value for solution...</div>
-          <figure class="figure">
-            <img
-              class="lightbox-img"
-              src="assets/img/StudentHUB_ERD.png"
-              data-full="assets/img/StudentHUB_ERD.png"
-              data-caption="ERD structure for StudentHub data model."
-              alt="ERD diagram"
-            />
-            <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
-          </figure>
-          <p class="small-note">
-            Synthetic data rules and relational mappings are summarized in the report appendices.
-          </p>
+      </div>
+      <div class="architecture-block">
+        <h3>Data Structure & ERD</h3>
+        <p id="data-design-overview">
+          Loading data design overview...
+        </p>
+        <div class="data-erd-columns">
+          <div>
+            <p id="data-identity">Loading identity and roles...</p>
+            <p id="data-design-student">
+              Loading student data design...
+            </p>
+            <p id="data-experience-skills">Loading experience and skills design...</p>
+            <p id="data-jobs-orgs">Loading jobs and organizations design...</p>
+          </div>
+          <div>
+            <p id="data-matching">Loading matching design...</p>
+            <p id="data-analytics">Loading analytics design...</p>
+            <p id="data-future">Loading future design...</p>
+            <ul class="card-list" id="data-behavioral-list"></ul>
+            <p class="small-note">
+              Synthetic data rules and relational mappings are summarized in the report appendices.
+            </p>
+          </div>
         </div>
+        <figure class="figure data-erd-figure">
+          <img
+            class="lightbox-img"
+            src="assets/img/StudentHUB_ERD.png"
+            data-full="assets/img/StudentHUB_ERD.png"
+            data-caption="ERD structure for StudentHub data model."
+            alt="ERD diagram"
+          />
+          <figcaption id="data-erd-caption">Figure B1. ERD structure for StudentHub data model.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -463,6 +448,8 @@
   <section id="data-flow" class="section alt page" data-page="architecture">
     <div class="container">
       <h2>Data Flow Explanation</h2>
+      <div class="highlight-box" id="data-generation">Loading generation logic...</div>
+      <div class="highlight-box" id="data-value">Loading value for solution...</div>
       <p id="data-flow-text">
         High-level data flow placeholder. Describe how data moves from collection to storage, matching, dashboards, and AI assistant. Replace with your final data flow notes or diagram.
       </p>
@@ -477,7 +464,7 @@
     <div class="container">
       <h2>6. Dashboard & Data Analysis</h2>
       <p class="section-intro">
-        Dashboards prove how unified data powers personalized insights for each role. Open the live dashboard below or explore the screenshots.
+        Dashboards prove how unified data powers personalized insights for each role.
       </p>
       <p id="dashboard-overview">Loading dashboard overview...</p>
       <p>
@@ -608,7 +595,7 @@
         <div class="extras-card">
           <h3>MVP app - all MVP related features included</h3>
           <p>Link to  live/hosted app (Vercel).</p>
-          <a  href="https://alumni-connect-mvp.vercel.app/login" class="btn-secondary disabled" aria-disabled="true">APP</a>
+          <a id="extras-dashboard" href="https://alumni-connect-mvp.vercel.app/login" class="btn-secondary disabled" aria-disabled="true">Accessn App</a>
         </div>
       </div>
       <div class="small-note" id="table-note"></div>

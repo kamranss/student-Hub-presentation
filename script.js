@@ -663,10 +663,10 @@ function applySectionHero(sectionId, heroUrl) {
       overlay.innerHTML = `
         <div class="arch-left">
           <p class="hero-heading-large">StudentHub</p>
-          <p class="hero-subtitle-large">Dashboard & Data Analysis</p>
+          <p class="hero-subtitle-large">Dashboard</p>
         </div>
         <div class="home-illustration" aria-hidden="true">
-          <img src="assets/img/hero/8.png" alt="" />
+          <img src="assets/img/hero/7.png" alt="" />
         </div>
       `;
       hero.appendChild(overlay);
@@ -737,18 +737,17 @@ function applySectionHero(sectionId, heroUrl) {
       hero.appendChild(overlay);
     }
   } else if (sectionId === "ethics") {
-    hero.classList.add("hero-ethics");
+    hero.classList.add("hero-architecture");
     if (!hero.querySelector(".ethics-hero-content")) {
       const overlay = document.createElement("div");
-      overlay.className = "ethics-hero-content";
+      overlay.className = "home-hero-content ethics-hero-content";
       overlay.innerHTML = `
-        <div class="ethics-left">
-          <p class="eyebrow">StudentHub</p>
-          <h3>Ethics & Trust</h3>
-          <p class="ethics-sub">Privacy-first, consent-led, and inclusive by default.</p>
+        <div class="arch-left">
+          <p class="hero-heading-large">StudentHub</p>
+          <p class="hero-subtitle-large">Ethics & Trust</p>
         </div>
-        <div class="ethics-illustration" aria-hidden="true">
-          <!-- SVG kept as-is -->
+        <div class="home-illustration" aria-hidden="true">
+          <img src="assets/img/hero/12.png" alt="" />
         </div>
       `;
       hero.appendChild(overlay);

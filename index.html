@@ -451,10 +451,41 @@
       <div class="highlight-box" id="data-generation">Loading generation logic...</div>
       <div class="highlight-box" id="data-value">Loading value for solution...</div>
       <p id="data-flow-text">
-        High-level data flow.
-      <div class="empty-state" id="data-flow-visual">
-        Data flow diagram.
-      </div>
+        This diagram shows how data actually moves inside StudentHub. Each portal (Student, Employer, University/Admin) writes into specific JSON data sources: events, jobs, news, watchlists, assignments, notifications, mentorships, and student profile activity. These files feed into a scoring engine that calculates each student’s focus and engagement based on real actions: events attended, news viewed, jobs applied, notes written, and watchlist items. The studentMetrics.json file becomes the central source for AI prompts, job-match analysis, improvement recommendations, cover letter drafts, and mentorship suggestions. Finally, all processed data goes to dashboards for admins and program staff, giving them a real view of engagement, employability, and mentoring pipelines.
+      </p>
+      <figure class="figure">
+        <img
+          class="lightbox-img"
+          src="assets/img/data-flow.png"
+          data-full="assets/img/data-flow.png"
+          data-caption="High-level data flow for StudentHub."
+          alt="High-level data flow diagram"
+        />
+        <figcaption>Figure A4. High-level data flow for StudentHub.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Role Based System Flow -->
+  <section id="role-flow" class="section page" data-page="architecture">
+    <div class="container">
+      <h2>Role Based System Flow</h2>
+      <p class="section-intro">
+        This diagram shows how StudentHub works after a user logs in. Each user type sees different parts of the system based on their role. The platform validates the user’s identity, checks their role, and then unlocks specific features for Students, Employers, University Staff, and Super Admins. This keeps the system secure and focused—every user only interacts with tools that match their responsibilities.
+      </p>
+      <p class="section-intro">
+        It reflects the app workflow: login → role validation → role-based dashboards → actions (events, jobs, AI analysis, mentoring, admin controls). Together, this is a simple visual map of how core features are organized across the four roles in StudentHub.
+      </p>
+      <figure class="figure">
+        <img
+          class="lightbox-img"
+          src="assets/img/role-based-system-flow.png"
+          data-full="assets/img/role-based-system-flow.png"
+          data-caption="Role-based system flow across StudentHub."
+          alt="Role-based system flow diagram"
+        />
+        <figcaption>Figure A3. Role-based system flow for StudentHub.</figcaption>
+      </figure>
     </div>
   </section>
 

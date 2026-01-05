@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initPageNav();
+  initMobileNav();
   const modernData = window.presentationData || window.siteDataV3;
   const legacyData = window.siteData;
 
@@ -1121,6 +1122,55 @@ function initPageNav() {
   const initial = location.hash.replace("#", "") || defaultPage;
   const exists = sections.some((sec) => sec.dataset.page === initial);
   activate(exists ? initial : defaultPage);
+}
+
+function initMobileNav() {
+  const toggle = document.getElementById("nav-toggle");
+  const nav = document.getElementById("main-nav");
+  if (!toggle || !nav) return;
+
+  const closeNav = () => {
+    nav.classList.remove("open");
+    toggle.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+  };
+
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    toggle.classList.toggle("is-open", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    toggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation" : "Open navigation"
+    );
+  });
+
+  nav.querySelectorAll("a[data-page]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 900) {
+        closeNav();
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      nav.classList.contains("open") &&
+      window.innerWidth <= 900 &&
+      !nav.contains(event.target) &&
+      event.target !== toggle &&
+      !toggle.contains(event.target)
+    ) {
+      closeNav();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeNav();
+    }
+  });
 }
 
 function initLightbox() {
